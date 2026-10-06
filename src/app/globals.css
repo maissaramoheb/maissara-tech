@@ -28,6 +28,20 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
 }
+#identity,
+#domains,
+#work,
+#experience,
+#research,
+#research-projects,
+#lab,
+#about,
+#contact {
+  scroll-margin-top: 96px;
+}
+main:focus {
+  outline: none;
+}
 body {
   margin: 0;
   background: var(--background);
@@ -218,6 +232,7 @@ h1 {
   letter-spacing: -0.04em;
   line-height: 1.18;
   margin-top: 36px;
+  text-wrap: balance;
 }
 .hero-description {
   max-width: 510px;
@@ -225,6 +240,7 @@ h1 {
   font-size: 15px;
   line-height: 1.8;
   margin-top: 24px;
+  text-wrap: pretty;
 }
 .hero-actions {
   display: flex;
@@ -546,6 +562,27 @@ h1 {
   font-size: 27px;
   max-width: 430px;
 }
+.system-visual-compact {
+  margin-top: 24px;
+}
+.system-visual-compact figure {
+  margin: 0;
+  width: 100%;
+}
+.system-visual-compact img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid #343b3f;
+  transition: transform 0.3s ease;
+}
+.system-visual-compact figure:hover img {
+  transform: translateY(-2px);
+}
+.system-visual-compact figcaption {
+  margin-top: 10px;
+  font-size: 8px;
+}
 .trajectory-layout {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -582,9 +619,21 @@ h1 {
 .trajectory-index {
   color: var(--accent);
 }
-.trajectory-arrow {
+.trajectory-connector {
   margin-inline-start: auto;
-  color: var(--muted);
+  display: flex;
+  align-items: center;
+}
+.trajectory-rule {
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--line);
+}
+.trajectory-current {
+  color: var(--accent);
+  font-size: 9px;
+  letter-spacing: 0.12em;
 }
 .research-section {
   background-color: var(--surface);
@@ -887,9 +936,16 @@ h1 {
     min-height: 40px;
   }
   .mobile-nav:not([hidden]) {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--background);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.8);
     display: grid;
-    border-top: 1px solid var(--line);
-    padding: 8px 20px 20px;
+    padding: 8px 20px 24px;
+    z-index: 40;
   }
   .mobile-nav a {
     font-family: var(--font-geist-mono), monospace;
@@ -1087,7 +1143,7 @@ h1 {
     font-size: 19px;
     line-height: 1.4;
   }
-  .trajectory-arrow {
+  .trajectory-connector {
     flex-shrink: 0;
   }
   .research-grid {

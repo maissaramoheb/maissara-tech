@@ -35,7 +35,7 @@ export default function Home() {
         Skip to content
       </a>
       <Navigation />
-      <main id="main">
+      <main id="main" tabIndex={-1}>
         <section
           id="identity"
           className="hero container"
@@ -264,7 +264,7 @@ export default function Home() {
             <span />
           </div>
           <h2 id="contact-title">
-            Complex problem?
+            Complex problem?{" "}
             <br />
             <span>Start with the system around it.</span>
           </h2>
@@ -275,10 +275,11 @@ export default function Home() {
             </ExternalLink>
           ) : (
             <div className="contact-pending">
-              <span className="contact-placeholder">
-                {site.contact.label} <span aria-hidden="true">↗</span>
-              </span>
-              <p>Direct contact details will be available here soon.</p>
+              <div className="system-links">
+                <ExternalLink href={site.github}>GitHub Profile</ExternalLink>
+                <ExternalLink href={site.orcid}>ORCID Record</ExternalLink>
+              </div>
+              <p>Direct contact details will be published here upon official activation.</p>
             </div>
           )}
         </section>

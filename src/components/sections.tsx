@@ -104,6 +104,22 @@ export function SystemShowcase({
           <ExternalLink href={system.repository}>Repository</ExternalLink>
         </div>
       </div>
+      {!featured && system.image && (
+        <div className="system-visual-compact">
+          <figure>
+            <Image
+              src={system.image}
+              alt={system.imageAlt || `${system.name} interface preview`}
+              width={1440}
+              height={800}
+              sizes="(max-width: 760px) 100vw, 45vw"
+            />
+            <figcaption className="label">
+              INTERFACE PREVIEW / {system.name}
+            </figcaption>
+          </figure>
+        </div>
+      )}
       {featured && (
         <div className="system-visual">
           {system.image ? (
@@ -146,11 +162,13 @@ export function Trajectory() {
             0{i + 1}
           </span>
           <h3>{step}</h3>
-          {i < trajectory.length - 1 && (
-            <span className="trajectory-arrow" aria-hidden="true">
-              ↓
-            </span>
-          )}
+          <span className="trajectory-connector" aria-hidden="true">
+            {i === trajectory.length - 1 ? (
+              <span className="trajectory-current label">CURRENT</span>
+            ) : (
+              <span className="trajectory-rule" />
+            )}
+          </span>
         </li>
       ))}
     </ol>

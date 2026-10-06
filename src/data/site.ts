@@ -80,16 +80,22 @@ export const systems: System[] = [
   },
   {
     id: "003",
+    image: "/images/ycps-toolkit-lab.webp",
+    imageAlt: "YCPS Toolkit Lab planning interface and risk pathway mapping workspace.",
     name: "Youth, Climate, Peace & Security Toolkit Lab",
     description:
       "A planning, policy and training workspace connecting youth, climate-security and peacebuilding analysis with practical programme and policy design.",
+    tags: ["PLANNING", "POLICY", "CLIMATE-SECURITY", "PEACEBUILDING"],
     repository: "https://github.com/maissaramoheb/ycps-toolkit-lab",
   },
   {
     id: "004",
+    image: "/images/trifecta-performance-lab.webp",
+    imageAlt: "Trifecta Performance Lab trainer development and learning domains progression interface.",
     name: "Trifecta Performance Lab",
     description:
       "A bilingual trainer-development and performance system connecting learning domains, assessment, evidence, progression and human-performance design.",
+    tags: ["TRAINING DESIGN", "HUMAN PERFORMANCE", "ASSESSMENT", "PROGRESSION"],
     repository: "https://github.com/maissaramoheb/trifecta-performance-lab",
   },
 ];
@@ -114,7 +120,7 @@ export const publication = {
 export const labs = [
   {
     name: "Mission Learning Design Lab",
-    status: "PROTOTYPE",
+    status: "ACTIVE DEVELOPMENT",
     url: "https://learninglab.maissara.tech",
     repository: "https://github.com/maissaramoheb/mission-learning-design-lab",
   },
