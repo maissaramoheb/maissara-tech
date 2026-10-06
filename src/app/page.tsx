@@ -1,10 +1,9 @@
 import { Navigation } from "@/components/navigation";
-import { Progression } from "@/components/reveal";
+import { CinematicSequence } from "@/components/v2-motion/CinematicSequence";
 import { Contours, EvidenceGraph } from "@/components/visuals";
 import {
   Label,
   SectionHeader,
-  DomainMatrix,
   SystemShowcase,
   Trajectory,
   ResearchCards,
@@ -36,83 +35,10 @@ export default function Home() {
       </a>
       <Navigation />
       <main id="main" tabIndex={-1}>
-        <section
-          id="identity"
-          className="hero container"
-          aria-labelledby="hero-title"
-        >
-          <div className="hero-top">
-            <Label>
-              MS / 01 <span className="label-divider">—</span> FIELD • STRATEGY
-              • SYSTEMS
-            </Label>
-            <Label className="hero-note">RESEARCH · SYSTEMS · PRACTICE</Label>
-          </div>
-          <div className="hero-layout">
-            <div className="hero-copy">
-              <h1 id="hero-title">
-                MAISSARA
-                <br />
-                SELIM<span className="identity-dot">.</span>
-              </h1>
-              <h2 className="hero-thesis">
-                From complex environments
-                <br className="desktop-break" /> to better decisions
-                <br className="desktop-break" /> and practical systems.
-              </h2>
-              <p className="hero-description">
-                I work at the intersection of operational experience,
-                institutional learning, strategic planning and emerging
-                technology—turning complex field problems into structured
-                decisions, tools and capability.
-              </p>
-              <div className="hero-actions">
-                <a className="button-primary" href="#work">
-                  Explore Selected Work <span aria-hidden="true">↗</span>
-                </a>
-                <a className="text-link" href="#research">
-                  Research & Publications <span aria-hidden="true">↓</span>
-                </a>
-              </div>
-            </div>
-            <div className="hero-visual">
-              <Contours />
-              <div className="visual-caption label">
-                COMPLEXITY → CAPABILITY
-              </div>
-              <Progression />
-              <div className="visual-register label" aria-hidden="true">
-                <span>OBSERVE / UNDERSTAND / ACT</span>
-                <span>MS — 01</span>
-              </div>
-            </div>
-          </div>
-          <div className="hero-bottom">
-            <Label>
-              PEACE & SECURITY / STRATEGY / LEARNING / AI / RESEARCH
-            </Label>
-            <a className="label scroll-link" href="#domains">
-              SCROLL TO EXPLORE <span aria-hidden="true">↓</span>
-            </a>
-          </div>
-        </section>
-        <section
-          id="domains"
-          className="section container observations"
-          aria-labelledby="domains-title"
-        >
-          <SectionHeader
-            id="domains-title"
-            number="02"
-            label="OPERATING DOMAINS"
-            title="Working across systems, people and decisions."
-          >
-            My work sits across several disciplines, but the underlying problem
-            is consistent: how institutions understand complex environments,
-            develop people, make decisions and turn knowledge into action.
-          </SectionHeader>
-          <DomainMatrix />
-        </section>
+        {/* V2 MOTION PROOF OF CONCEPT: SCENES 00 THROUGH 04 */}
+        <CinematicSequence />
+
+        {/* HAND-OFF INTO UNTOUCHED V1 REMAINDER: SYSTEMS 002, 003, 004 */}
         <section
           id="work"
           className="section work-section"
@@ -130,7 +56,7 @@ export default function Home() {
               learning, evaluation and professional practice.
             </SectionHeader>
             <div className="systems-featured">
-              {systems.slice(0, 2).map((system) => (
+              {systems.slice(1, 2).map((system) => (
                 <SystemShowcase key={system.id} system={system} featured />
               ))}
             </div>

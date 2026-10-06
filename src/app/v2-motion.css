@@ -1,0 +1,760 @@
+/* ==========================================================================
+   MAISSARA.TECH — V2 MOTION PROOF OF CONCEPT STYLES
+   Operational Intelligence × Cinematic Editorial
+   ========================================================================== */
+
+/* Outer scroll runway for the pinned cinematic experience */
+.v2-cinematic-runway {
+  position: relative;
+  width: 100%;
+  background: var(--background);
+  /* Desktop scroll distance: approx 350vh for all 5 cinematic scenes */
+}
+
+/* Pinned stage that remains fixed in viewport while scrubbing */
+.v2-cinematic-stage {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: radial-gradient(circle at 65% 40%, rgba(198, 149, 82, 0.05) 0%, rgba(11, 13, 14, 0) 65%),
+              var(--background);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+/* Subtle cinematic vignette and coordinate grid overlay */
+.v2-cinematic-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.v2-cinematic-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(11, 13, 14, 0.8) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Master canvas for all animated layers */
+.v2-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* HUD telemetry & scene indicator fixed at top/bottom of pinned viewport */
+.v2-telemetry-bar {
+  position: absolute;
+  top: 96px;
+  width: min(100% - 112px, 1328px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 25;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.v2-telemetry-bar.is-active {
+  opacity: 1;
+}
+
+.v2-telemetry-phase {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.v2-telemetry-pulse {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.8;
+}
+
+.v2-telemetry-coords {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+/* SCENE 00: HERO LAYER */
+.v2-scene-hero {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 15;
+  pointer-events: auto;
+  transform-origin: center center;
+}
+
+.v2-hero-inner {
+  width: min(100% - 112px, 1328px);
+  margin-inline: auto;
+}
+
+.v2-hero-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 24px;
+  align-items: center;
+}
+
+.v2-hero-copy {
+  grid-column: span 7;
+}
+
+.v2-hero-visual {
+  grid-column: span 5;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 520px;
+}
+
+/* Background topographic lines that advance toward viewer */
+.v2-topo-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 5;
+  transform-origin: 65% 50%;
+}
+
+.v2-topo-svg {
+  width: 140vmax;
+  height: 140vmax;
+  color: var(--accent);
+  opacity: 0.22;
+}
+
+/* SCENE 01: COMPLEXITY → CAPABILITY STAGE */
+.v2-analytical-stage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 18;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.v2-analytical-container {
+  width: min(100% - 112px, 1180px);
+  height: 80vh;
+  position: relative;
+}
+
+.v2-analytical-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Analytical nodes, labels, and vector lines */
+.v2-node-dot {
+  fill: var(--accent);
+  transition: r 0.3s ease;
+}
+
+.v2-node-ring {
+  stroke: var(--accent);
+  stroke-width: 1;
+  fill: none;
+  opacity: 0.4;
+}
+
+.v2-node-label {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  fill: var(--text);
+  font-weight: 500;
+}
+
+.v2-node-meta {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.08em;
+  fill: var(--muted);
+}
+
+.v2-vector-line {
+  stroke: var(--accent);
+  stroke-width: 1;
+  opacity: 0.35;
+  stroke-dasharray: 4 4;
+}
+
+.v2-vector-solid {
+  stroke: var(--accent);
+  stroke-width: 1.2;
+  opacity: 0.6;
+}
+
+/* Analytical stage narrative label (left/center) */
+.v2-stage-narrative {
+  position: absolute;
+  top: 14%;
+  left: 0;
+  max-width: 380px;
+  pointer-events: none;
+  z-index: 22;
+}
+
+.v2-stage-step-tag {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.14em;
+  margin-bottom: 8px;
+}
+
+.v2-stage-step-title {
+  font-size: clamp(24px, 2.5vw, 36px);
+  font-weight: 450;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.v2-stage-step-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* SCENE 02: OPERATING DOMAINS BRIDGE */
+.v2-domains-bridge {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.v2-domains-content {
+  width: min(100% - 112px, 1100px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.v2-domains-tag {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+.v2-domains-title-track {
+  height: 90px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.v2-domain-item {
+  position: absolute;
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 450;
+  letter-spacing: -0.04em;
+  color: var(--text);
+  opacity: 0;
+  transform: translateY(16px);
+  white-space: nowrap;
+}
+
+.v2-domain-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 580px;
+  margin-top: 20px;
+  opacity: 0;
+}
+
+.v2-domains-resolve {
+  margin-top: 36px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  opacity: 0;
+}
+
+/* SCENE 03 & 04: FIELD LEARNING STUDIO REVEAL */
+.v2-fls-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 24;
+  pointer-events: auto;
+  opacity: 0;
+}
+
+.v2-fls-frame-wrapper {
+  position: relative;
+  width: 88vw;
+  max-width: 1280px;
+  height: min(72vh, 760px);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 4px;
+  transform-origin: center center;
+}
+
+/* Window Chrome bar */
+.v2-fls-chrome {
+  height: 38px;
+  background: #0e1113;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  padding-inline: 18px;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.v2-fls-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.v2-fls-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.v2-fls-url-bar {
+  flex: 1;
+  max-width: 480px;
+  margin-inline: auto;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 9.5px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.v2-fls-badge {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 9px;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+}
+
+/* Image container */
+.v2-fls-viewport {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+  background: #0b0d0e;
+}
+
+.v2-fls-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transform-origin: 30% 30%;
+}
+
+/* Stage annotations overlay */
+.v2-fls-overlay-info {
+  position: absolute;
+  bottom: 24px;
+  left: 28px;
+  right: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.v2-fls-concept-card {
+  background: rgba(11, 13, 14, 0.88);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--line);
+  padding: 16px 22px;
+  border-radius: 3px;
+  max-width: 460px;
+  pointer-events: auto;
+}
+
+.v2-fls-concept-tag {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.v2-fls-concept-title {
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.v2-fls-concept-body {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+/* Workflow progression track (EVIDENCE -> FINDINGS -> LESSONS -> RECOMMENDATIONS -> PROFESSIONAL OUTPUT) */
+.v2-fls-workflow-bar {
+  display: flex;
+  gap: 8px;
+  background: rgba(11, 13, 14, 0.9);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--line);
+  padding: 8px 14px;
+  border-radius: 3px;
+}
+
+.v2-workflow-step {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.45;
+  transition: opacity 0.3s, color 0.3s;
+}
+
+.v2-workflow-step.is-active {
+  opacity: 1;
+  color: var(--accent);
+}
+
+.v2-workflow-step:not(:last-child)::after {
+  content: "→";
+  margin-inline-start: 6px;
+  color: var(--line);
+}
+
+/* Bottom CTA bar on final reveal */
+.v2-fls-cta-row {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* Smooth hand-off indicator into V1 */
+.v2-handoff-indicator {
+  position: absolute;
+  bottom: 24px;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (<= 768px & 390px)
+   Graceful degradation: Clean, legible vertical flow without pin traps
+   ========================================================================== */
+@media (max-width: 768px) {
+  .v2-cinematic-runway {
+    height: auto;
+  }
+
+  .v2-cinematic-stage {
+    position: relative;
+    top: auto;
+    height: auto;
+    min-height: auto;
+    overflow: visible;
+    padding: 0;
+    display: block;
+  }
+
+  .v2-telemetry-bar {
+    display: none;
+  }
+
+  .v2-scene-hero {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    min-height: calc(100vh - 86px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: 40px 60px;
+    opacity: 1;
+    transform: none;
+  }
+
+  .v2-hero-inner {
+    width: min(100% - 40px, 1328px);
+  }
+
+  .v2-hero-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .v2-hero-copy {
+    width: 100%;
+  }
+
+  .v2-hero-visual {
+    width: 100%;
+    min-height: 340px;
+  }
+
+  .v2-analytical-stage {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    display: block;
+    opacity: 1;
+    transform: none;
+    padding-block: 60px 40px;
+    border-top: 1px solid var(--line);
+  }
+
+  .v2-analytical-container {
+    width: min(100% - 40px, 1328px);
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .v2-stage-narrative {
+    position: relative;
+    top: auto;
+    left: auto;
+    max-width: 100%;
+  }
+
+  .v2-stage-narrative > div {
+    position: relative !important;
+    top: auto !important;
+    opacity: 1 !important;
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  .v2-analytical-svg {
+    width: 100%;
+    height: auto;
+    max-height: 280px;
+    opacity: 1;
+  }
+
+  .v2-domains-bridge {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    display: block;
+    opacity: 1;
+    transform: none;
+    padding-block: 60px 40px;
+    border-top: 1px solid var(--line);
+  }
+
+  .v2-domains-content {
+    width: min(100% - 40px, 1100px);
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .v2-domains-title-track {
+    height: auto;
+    min-height: 48px;
+  }
+
+  .v2-domain-item {
+    font-size: clamp(24px, 6vw, 32px);
+    position: relative !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .v2-fls-scene {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    display: block;
+    opacity: 1;
+    transform: none;
+    padding-block: 60px 40px;
+    border-top: 1px solid var(--line);
+  }
+
+  .v2-fls-container {
+    width: min(100% - 40px, 1328px);
+    max-width: 100%;
+  }
+
+  .v2-fls-frame-wrapper {
+    width: 100%;
+    height: auto;
+    min-height: 300px;
+    transform: none !important;
+  }
+
+  .v2-fls-overlay-info {
+    position: relative;
+    inset: auto;
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    background: transparent;
+  }
+
+  .v2-fls-concept-card {
+    padding: 16px;
+    background: rgba(11, 13, 14, 0.95);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    width: 100%;
+  }
+
+  .v2-fls-workflow-bar {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 10px 14px;
+    width: 100%;
+    background: rgba(17, 20, 22, 0.95);
+  }
+
+  .v2-fls-cta-row {
+    margin-top: 24px;
+    opacity: 1;
+    transform: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+/* ==========================================================================
+   REDUCED MOTION SUPPORT
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .v2-cinematic-runway {
+    height: auto !important;
+  }
+
+  .v2-cinematic-stage {
+    position: relative !important;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+
+  .v2-scene-hero,
+  .v2-analytical-stage,
+  .v2-domains-bridge,
+  .v2-fls-scene {
+    position: relative !important;
+    inset: auto !important;
+    opacity: 1 !important;
+    transform: none !important;
+    padding-block: 60px !important;
+  }
+
+  .v2-fls-frame-wrapper {
+    transform: none !important;
+    height: 500px !important;
+  }
+
+  .v2-fls-cta-row {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
