@@ -115,7 +115,7 @@ export function SystemShowcase({
               sizes="(max-width: 760px) 100vw, 45vw"
             />
             <figcaption className="label">
-              INTERFACE PREVIEW / {system.name}
+              {system.imageCaption || `INTERFACE PREVIEW / ${system.name}`}
             </figcaption>
           </figure>
         </div>
@@ -132,7 +132,7 @@ export function SystemShowcase({
                 sizes="(max-width: 760px) 100vw, 60vw"
               />
               <figcaption className="label">
-                PUBLIC INTERFACE / {system.name}
+                {system.imageCaption || `PUBLIC INTERFACE / ${system.name}`}
               </figcaption>
             </figure>
           ) : (

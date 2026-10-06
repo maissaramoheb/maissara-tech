@@ -52,6 +52,7 @@ export type System = {
   qualifier?: string;
   image?: string;
   imageAlt?: string;
+  imageCaption?: string;
 };
 export const systems: System[] = [
   {
@@ -81,7 +82,8 @@ export const systems: System[] = [
   {
     id: "003",
     image: "/images/ycps-toolkit-lab.webp",
-    imageAlt: "YCPS Toolkit Lab planning interface and risk pathway mapping workspace.",
+    imageAlt: "YCPS Toolkit Lab workflow visualization and risk pathway mapping workspace.",
+    imageCaption: "WORKFLOW VISUALIZATION / Youth, Climate, Peace & Security Toolkit Lab",
     name: "Youth, Climate, Peace & Security Toolkit Lab",
     description:
       "A planning, policy and training workspace connecting youth, climate-security and peacebuilding analysis with practical programme and policy design.",

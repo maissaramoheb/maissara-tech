@@ -279,7 +279,6 @@ export default function Home() {
                 <ExternalLink href={site.github}>GitHub Profile</ExternalLink>
                 <ExternalLink href={site.orcid}>ORCID Record</ExternalLink>
               </div>
-              <p>Direct contact details will be published here upon official activation.</p>
             </div>
           )}
         </section>
