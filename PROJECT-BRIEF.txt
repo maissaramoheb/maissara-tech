@@ -1,0 +1,627 @@
+PROJECT
+Build the first production version of maissara.tech, the professional digital headquarters of Maissara Selim.
+
+Do not treat this as a résumé website, generic portfolio, military-themed website, SaaS landing page, or AI-startup template.
+
+The site should communicate one central idea:
+
+Maissara works across operational practice, peace and security, institutional learning, strategic planning, research, and emerging technology — turning complex real-world problems into structured decisions, methods, tools, and capability.
+
+==================================================
+1. CORE DESIGN DIRECTION
+==================================================
+
+Design language:
+“Operational Intelligence × Editorial Minimalism”
+
+Reference qualities:
+- Helsing: institutional authority and disciplined dark presentation
+- Linear: spacing, hierarchy, restrained sophistication
+- Palantir: systems/decision mentality
+- Mapbox dark cartography: subdued geographical/topographic texture
+- Observable: analytical information as visual material
+- Vercel: implementation quality and restrained motion
+
+Do NOT clone any reference.
+
+Avoid:
+- camouflage
+- weapons
+- crosshairs
+- radar sweeps
+- cyberpunk/neon
+- fake classified interfaces
+- excessive military terminology
+- floating particles
+- glassmorphism everywhere
+- oversized rounded SaaS cards
+- generic gradient blobs
+- custom cursor
+- excessive animation
+
+The tactical/operational influence should be subtle and primarily visible through precision, typography, coordinates, fine grids, topographic structures, data relationships, and disciplined information architecture.
+
+==================================================
+2. VISUAL SYSTEM
+==================================================
+
+Dark-only V1.
+
+Suggested design tokens:
+
+background: #0B0D0E
+surface: #111416
+surfaceRaised: #15191B
+textPrimary: #F0EFE9
+textMuted: #98A0A2
+line: #262B2E
+accent: #C69552
+accentHover: #D4A25F
+
+Typography:
+- Geist Sans for primary typography
+- Geist Mono for coordinates, labels, section numbers, tags and system metadata
+
+Use strong typography and negative space.
+
+Desktop:
+- 12-column grid
+- max content width approximately 1280–1360px
+- substantial section spacing
+- restrained 1px rules and structural lines
+
+Mobile:
+- single-column
+- preserve typography hierarchy
+- significantly simplify background effects and animation
+- no interaction should depend on hover
+
+Corners:
+- primarily square
+- maximum approximately 6px radius
+- tags may use compact rectangular treatments, not pill-heavy UI
+
+==================================================
+3. MOTION
+==================================================
+
+Motion should communicate structure, not decorate.
+
+Use Motion for React only where useful.
+
+Allowed examples:
+- subtle section reveal
+- thin rule extending into position
+- project screenshot movement of only a few pixels
+- slight image scale on hover
+- very slow contour displacement
+- progressive appearance of FIELD → EVIDENCE → ANALYSIS → DECISION → CAPABILITY
+
+No constant visual noise.
+
+Implement and test prefers-reduced-motion.
+
+Avoid Three.js/WebGL in V1.
+Use CSS and SVG for the analytical/topographic visual language.
+
+==================================================
+4. PAGE STRUCTURE
+==================================================
+
+Build one excellent long-form homepage.
+
+Sticky restrained navigation:
+
+WORK
+EXPERIENCE
+RESEARCH
+LAB
+ABOUT
+
+Right-side CTA:
+CONTACT ↗
+
+Sections:
+
+01 IDENTITY
+02 OPERATING DOMAINS
+03 SELECTED SYSTEMS
+04 PROFESSIONAL TRAJECTORY
+05 RESEARCH
+06 MAISSARA LAB
+07 ABOUT
+08 CONTACT / FOOTER
+
+Use small technical identifiers such as:
+MS / 01
+SYSTEM / 001
+DOMAIN / 03
+RESEARCH / 02
+
+Use them sparingly.
+
+==================================================
+5. HERO
+==================================================
+
+No portrait.
+
+Label:
+MS / 01 — FIELD • STRATEGY • SYSTEMS
+
+Headline:
+
+MAISSARA SELIM
+
+From complex environments to better decisions and practical systems.
+
+Supporting copy:
+
+I work at the intersection of operational experience, institutional learning, strategic planning and emerging technology—turning complex field problems into structured decisions, tools and capability.
+
+Domain line:
+
+PEACE & SECURITY / STRATEGY / LEARNING / AI / RESEARCH
+
+Primary CTA:
+Explore Selected Work
+
+Secondary CTA:
+Research & Publications
+
+Create a restrained topographic/data visual system around or behind the hero.
+
+Possible analytical progression:
+
+FIELD
+↓
+EVIDENCE
+↓
+ANALYSIS
+↓
+DECISION
+↓
+CAPABILITY
+
+It should feel sophisticated and almost architectural.
+
+==================================================
+6. OPERATING DOMAINS
+==================================================
+
+Heading:
+
+Working across systems, people and decisions.
+
+Intro:
+
+My work sits across several disciplines, but the underlying problem is consistent: how institutions understand complex environments, develop people, make decisions and turn knowledge into action.
+
+Five domains:
+
+01 Peace & Security
+Peace operations, policing, security-sector development, protection and complex operational environments.
+
+02 Strategy & Decision Systems
+Planning, policy, analysis, monitoring, organizational performance and decision support.
+
+03 Learning & Human Performance
+Training design, trainer development, scenario-based learning, assessment and capability development.
+
+04 AI & Digital Systems
+Applied AI, human–AI interaction and digital tools designed around real professional workflows.
+
+05 Research & Innovation
+Interdisciplinary inquiry connecting practice, evidence, decision-making and emerging technology.
+
+Present these as an analytical matrix rather than generic cards.
+
+==================================================
+7. SELECTED SYSTEMS
+==================================================
+
+Heading:
+Selected Systems
+
+Intro:
+Tools built from recurring problems encountered in planning, learning, evaluation and professional practice.
+
+Make this one of the most visually important sections.
+
+SYSTEM / 001
+FIELD LEARNING STUDIO
+
+Copy:
+A human-led analytical workbench for turning field evidence into findings, lessons, recommendations and professional learning outputs.
+
+Tags:
+FIELD EVIDENCE
+EVALUATION
+LEARNING
+DECISION SUPPORT
+
+Primary URL:
+https://fls.maissara.tech
+
+Repository:
+https://github.com/maissaramoheb/field-learning-studio
+
+
+SYSTEM / 002
+UNPOL CAPACITY-BUILDING & DEVELOPMENT PLANNING TOOL
+
+Copy:
+A structured planning prototype for analysing policing environments, stakeholders, priorities, sequencing and implementation in peace-operation and security-sector reform contexts.
+
+Mandatory visible qualifier:
+UNOFFICIAL / EDUCATIONAL & DECISION-SUPPORT PROTOTYPE
+
+Primary URL:
+https://unpol.maissara.tech
+
+Repository:
+https://github.com/maissaramoheb/unpol-cbd-planning-tool
+
+
+SYSTEM / 003
+YOUTH, CLIMATE, PEACE & SECURITY TOOLKIT LAB
+
+Copy:
+A planning, policy and training workspace connecting youth, climate-security and peacebuilding analysis with practical programme and policy design.
+
+Repository:
+https://github.com/maissaramoheb/ycps-toolkit-lab
+
+
+SYSTEM / 004
+TRIFECTA PERFORMANCE LAB
+
+Copy:
+A bilingual trainer-development and performance system connecting learning domains, assessment, evidence, progression and human-performance design.
+
+Repository:
+https://github.com/maissaramoheb/trifecta-performance-lab
+
+
+Use real project screenshots wherever possible.
+
+Do not invent capabilities not supported by the projects.
+
+==================================================
+8. PROFESSIONAL TRAJECTORY
+==================================================
+
+Heading:
+
+Practice before product.
+
+Supporting copy:
+
+The systems above did not begin as software ideas. They grew from repeated problems encountered across operations, peace missions, training, planning and institutional work.
+
+Show the progression:
+
+FIELD OPERATIONS & INVESTIGATIONS
+↓
+SPECIALIZED SECURITY OPERATIONS
+↓
+UN PEACE OPERATIONS
+↓
+TRAINING & CAPABILITY DEVELOPMENT
+↓
+PLANNING, POLICY & ORGANIZATIONAL PERFORMANCE
+↓
+AI, RESEARCH & DIGITAL SYSTEMS
+
+This should explain evolution rather than provide a conventional CV.
+
+Do not publish:
+- current sensitive organizational structures
+- readiness data
+- equipment data
+- personnel information
+- operational procedures
+- sensitive security processes
+- internal planning systems
+
+Use generalized professional language.
+
+==================================================
+9. RESEARCH
+==================================================
+
+Heading:
+
+Research emerging from practice.
+
+Intro:
+
+My research interests focus on how people and institutions make consequential decisions under complexity, and how technology can support those decisions without displacing professional judgment.
+
+Research territories:
+
+01 Human–AI Decision-Making in High-Stakes Environments
+
+02 AI & Data-Driven Decision Support in Peace Operations, Policing and Security-Sector Reform
+
+03 Training, Human Performance & Decision-Making in Complex Operations
+
+Include restrained links/components for:
+PUBLICATIONS
+DOI / ZENODO
+ORCID
+RESEARCH PROJECTS
+
+ORCID:
+https://orcid.org/0009-0004-3009-5888
+
+Known public DOI that may be surfaced if useful:
+https://doi.org/10.5281/zenodo.23079627
+
+Do not use the private Zenodo /me/uploads URL.
+
+Do not claim doctoral candidature or credentials that are not yet formally established.
+
+==================================================
+10. MAISSARA LAB
+==================================================
+
+Heading:
+Maissara Lab
+
+Subheading:
+Experiments at the intersection of learning, decision-making and emerging technology.
+
+This section is intentionally distinct from Selected Systems.
+
+Use maturity indicators such as:
+PROTOTYPE
+EXPERIMENT
+ACTIVE DEVELOPMENT
+RESEARCH CONCEPT
+
+Include:
+
+MISSION LEARNING DESIGN LAB
+
+URL:
+https://learninglab.maissara.tech
+
+Repository:
+https://github.com/maissaramoheb/mission-learning-design-lab
+
+Design the section so additional projects can be added later without redesigning the whole page.
+
+==================================================
+11. ABOUT
+==================================================
+
+Do NOT use a hero portrait.
+
+Create an elegant portrait placeholder in the About section:
+- abstract MS monogram
+- contour/grid treatment
+- easily replaceable later by a real portrait
+
+Working biography:
+
+Maissara Selim is a security and peace-operations practitioner, trainer, researcher and builder working across operational practice, institutional learning, strategic planning and emerging technology.
+
+His professional experience spans policing and specialized security operations, United Nations peace operations, capacity development, planning and organizational performance.
+
+His current work increasingly focuses on translating practical field problems into structured methodologies, learning systems and digital decision-support tools.
+
+Use “Lieutenant Colonel” only as a secondary professional credential in this area or the experience layer.
+Do not place the rank beside the main hero identity.
+
+Possible credential labels:
+
+LAW & POLICE SCIENCES
+MBA — AI IN BUSINESS ORGANIZATIONS
+UN PEACE OPERATIONS
+TRAINER DEVELOPMENT
+
+GitHub:
+https://github.com/maissaramoheb
+
+ORCID:
+https://orcid.org/0009-0004-3009-5888
+
+No LinkedIn link.
+
+==================================================
+12. CONTACT
+==================================================
+
+Closing statement:
+
+Complex problem? Start with the system around it.
+
+Supporting categories:
+
+Research · Advisory · Collaboration · Training · Technology
+
+Provide a clear contact CTA.
+
+Do not fabricate an email address if email infrastructure is not configured yet.
+Use an easy-to-replace placeholder/config constant.
+
+Footer:
+© Maissara Selim
+Research · Systems · Practice
+
+==================================================
+13. BACKGROUND VISUAL METAPHOR
+==================================================
+
+The background system should subtly evolve down the page.
+
+Hero:
+terrain / topographic contours
+
+Domains:
+points / observations
+
+Selected Systems:
+connections / evidence relationships
+
+Research:
+structured data / analytical grid
+
+Closing:
+clean resolved geometry
+
+This transition should be subtle enough that many users feel it before consciously noticing it.
+
+==================================================
+14. TECHNICAL REQUIREMENTS
+==================================================
+
+Use:
+- current stable Next.js App Router
+- TypeScript
+- Tailwind CSS
+- Motion for React
+- SVG/CSS for contours and analytical visual elements
+- Lucide only where icons are genuinely useful
+
+No database.
+No authentication.
+No CMS.
+No unnecessary API.
+No Three.js for V1.
+
+Keep content structured in data/config files so projects, research items and links can be changed without rewriting components.
+
+Create reusable components for:
+- section headers
+- system/project showcase
+- analytical labels
+- domain matrix
+- trajectory
+- research cards
+- lab items
+- external links
+
+==================================================
+15. SEO / IDENTITY
+==================================================
+
+Implement complete metadata for maissara.tech.
+
+Include:
+- title
+- description
+- canonical metadata
+- favicon / MS mark
+- Open Graph
+- Twitter/social preview metadata
+- sitemap
+- robots.txt
+
+Implement Schema.org JSON-LD using ProfilePage + Person where appropriate.
+
+Person entity:
+Maissara Selim
+
+Include verified sameAs links only:
+- GitHub
+- ORCID
+- confirmed public scholarly links
+
+Do not use private account/dashboard URLs.
+
+==================================================
+16. ACCESSIBILITY / QUALITY
+==================================================
+
+Semantic HTML.
+
+Keyboard accessible.
+
+Visible focus states.
+
+Sufficient color contrast.
+
+Alt text for meaningful images.
+
+No essential information conveyed only by motion or color.
+
+Support prefers-reduced-motion.
+
+Avoid excessive DOM complexity and animation listeners.
+
+==================================================
+17. PERFORMANCE
+==================================================
+
+The website should feel extremely fast.
+
+Optimize:
+- images
+- fonts
+- SVG complexity
+- client-side JavaScript
+- motion
+- bundle size
+
+Use Server Components wherever interactive client components are unnecessary.
+
+Do not sacrifice performance for decorative animation.
+
+==================================================
+18. RESPONSIVE DESIGN
+==================================================
+
+Desktop should feel spacious and cinematic.
+
+Tablet should retain the core grid logic.
+
+Mobile should be deliberately simplified rather than a compressed desktop version.
+
+On mobile:
+- reduce decorative contours
+- reduce animation
+- use one-column systems
+- preserve strong typography
+- make project screenshots legible
+- keep links/actions obvious
+
+==================================================
+19. BUILD DISCIPLINE
+==================================================
+
+First establish:
+1. design tokens
+2. page structure
+3. static content
+4. core responsive layout
+
+Then implement:
+5. project imagery
+6. background visual system
+7. restrained motion
+8. metadata/SEO
+9. accessibility polish
+10. final responsive QA
+
+Do not endlessly redesign during implementation.
+
+Preserve the agreed north star.
+
+Before declaring completion run:
+- lint
+- TypeScript checks
+- production build
+- responsive review
+- accessibility review
+- broken-link review
+
+Return a concise implementation report including:
+- what was built
+- any assumptions made
+- remaining placeholders
+- commands/tests run
+- issues requiring human decision
+
+Do not deploy to production until the completed local/preview implementation has been reviewed.
