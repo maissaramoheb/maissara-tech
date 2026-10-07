@@ -1,8 +1,23 @@
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
+import localFont from "next/font/local";
+const GeistSans = localFont({
+  src: "./Geist-Latin.woff2",
+  variable: "--font-geist-sans",
+  weight: "100 900",
+  display: "swap",
+});
+const GeistMono = localFont({
+  src: "./GeistMono-Latin.woff2",
+  variable: "--font-geist-mono",
+  weight: "100 900",
+  display: "swap",
+  preload: false,
+});
 import { site } from "@/data/site";
 import "./globals.css";
+import "./v2-full.css";
+import { Navigation } from "@/components/navigation";
+import { SiteFooter } from "@/components/v2/editorial";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: "Maissara Selim — Research, Systems, Practice",
@@ -38,7 +53,16 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body>{children}</body>
+      <body>
+        <a className="skip-link" href="#main">
+          Skip to content
+        </a>
+        <Navigation />
+        <main id="main" tabIndex={-1}>
+          {children}
+        </main>
+        <SiteFooter />
+      </body>
     </html>
   );
 }

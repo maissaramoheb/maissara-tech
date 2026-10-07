@@ -1,51 +1,43 @@
-# maissara.tech
+# maissara.tech — V2 review build
 
-Local first-production implementation of Maissara Selim’s professional digital headquarters. The owner’s authoritative brief is preserved in `PROJECT-BRIEF.txt`.
+The complete V2 implementation starts from frozen motion commit `ab887332028fa77291971efcbfff1a2005300551`, on `v2-full-build`. The authoritative build brief is `V2-BUILD-BRIEF.txt`; motion choreography is defined in `V2-MOTION-HANDOFF.md`. Production and the frozen branch are preserved.
 
-## Run
-
-Use Node.js 22.9+ and npm. The implementation was verified with Node 26.9.0 and npm 11.19.1.
+## Run and verify
 
 ```sh
 npm ci
 npm run dev
-```
-
-To review the production build:
-
-```sh
 npm run lint
 npm run typecheck
+npm test
 npm run build
 npm run start
 ```
 
-Next.js App Router 16.3.8, React 19.3, TypeScript, Tailwind 4.3, Motion 14 and locally served Geist fonts. Versions and lockfile are pinned. No database, authentication, CMS, API, analytics or environment variables.
+Next.js App Router, React, TypeScript, Tailwind, GSAP/ScrollTrigger and Geist. No new application dependencies, backend, contact form, authentication or CMS. Do not read or change environment files to edit public content.
 
-## Change content
+## Content and routes
 
-- `src/data/site.ts`: identity, public links, contact destination, domains, systems, research territories, biography and lab entries.
-- `src/app/globals.css`: design tokens, responsive grid and visual treatments.
-- `src/components/`: reusable headers, labels, external links, matrix, showcases, trajectory, research and lab items; navigation and the short progression animation are the only client components.
-- `src/app/layout.tsx`: canonical, Open Graph and social metadata.
-- `src/app/opengraph-image.tsx`, `icon.svg`, `sitemap.ts`, `robots.ts`: generated identity and discoverability assets.
-- `src/app/page.tsx`: section composition and ProfilePage + Person JSON-LD. Person sameAs contains identity profiles; the software DOI is linked in the research section rather than identifying the Person as software.
+Nine routes: `/`, `/work`, four `/work/[slug]` case studies, `/research`, `/about`, `/contact`. Project case studies share nine editorial chapters.
 
-Set `site.contact.href` to a verified `mailto:` or contact URL before publication. Until then the contact area explicitly states that direct details are forthcoming; it contains no fabricated address or working contact form. The About monogram is an intentional portrait placeholder.
+- `src/data/site.ts`: identity, verified links, research, trajectory, lab and optional `contactEmail`. Undefined email shows GitHub/ORCID only.
+- `src/data/projects.ts`: project facts, workflow, boundaries, authentic media and pinned README source commits.
+- `src/components/v2/editorial.tsx`: shared editorial chapter and deep-page components.
+- `src/components/v2/HomeContinuation.tsx`: scoped, lightly animated continuation; no additional pins.
+- `src/components/v2-motion/CinematicSequence.tsx`: frozen choreography with route/accessibility integration and deferred loading.
+- `src/app/v2-full.css`: extension of existing design, including complete static mobile/reduced-motion flow.
+- `src/lib/metadata.ts`, `src/lib/social.tsx`: page metadata and branded social imagery.
 
-English V1 follows the supplied copy. Logical CSS properties support future direction changes; no Arabic translation or bilingual release is claimed.
+## Motion and fonts
 
-## Image provenance
+Native scrolling; desktop-only pinned sequence above 768px; unchanged frozen timeline values. Reduced motion reveals complete content without pinning. GSAP contexts revert on route unmount and cancel late asynchronous initialization. Same Geist variable fonts, locally subset for Latin/punctuation/arrows to reduce initial transfer; original SIL license is retained beside font files. Other scripts use the existing fallback stack.
 
-Screenshots captured from the owner-supplied public sites on 5 October 2026:
+## Media and source integrity
 
-- `public/images/field-learning-studio.webp`: public homepage at https://fls.maissara.tech, 1440 × 1000.
-- `public/images/unpol-planning.webp`: public homepage at https://unpol.maissara.tech, cropped to its 1280 × 470 header/workbench introduction for readability.
+FLS and UNPOL images are inherited authentic public interface captures. YCPS is explicitly labeled a constructed workflow visualization, not an interface screenshot. Trifecta uses a new settled public Arabic RTL interface capture from its repository-listed live deployment. No adoption claims, fabricated metrics, portraits, client logos or email addresses.
 
-Images are authentic public views, optimized as WebP and rendered with Next Image. They are not invented product mockups. Other systems remain editorial text showcases rather than fabricated interfaces.
+Case-study implementation statements cite pinned public READMEs. Public DOI is a software release record, not a research article or institutional endorsement. All professional descriptions remain generalized.
 
 ## Release boundary
 
-No Git branch, commit, pull request, remote preview or deployment was created. The generated project directory is isolated from existing repositories. Production remains unpublished until the owner reviews the implementation and authorizes deployment. A Vercel deployment can use the defaults (`npm run build`, Next.js framework) after review.
-
-See `IMPLEMENTATION-REPORT.md` for checks, assumptions and limitations.
+This branch is for an owner-authorized Vercel **Preview** only. Do not merge, promote, change production aliases or assign `maissara.tech`. Historical V1 implementation reports describe earlier states and are not the current release report. See `V2-IMPLEMENTATION-REPORT.md` for V2 verification and review artifacts.

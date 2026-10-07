@@ -1,0 +1,1691 @@
+MAISSARA.TECH — FULL V2 IMPLEMENTATION
+MASTER CODEX BUILD BRIEF
+
+ROLE:
+You are the primary implementation engineer for the complete V2 build of maissara.tech.
+
+This is NOT an exploratory redesign.
+
+The visual direction, motion language, narrative architecture, brand system, mobile rules, and accessibility principles have already been designed and approved.
+
+Your task is to IMPLEMENT the full V2 faithfully, extend the frozen motion system across the rest of the website, build the deeper routes, and produce a production-ready preview for review.
+
+Do not reinterpret the brand.
+Do not invent a new visual language.
+Do not restart the design process.
+
+==================================================
+0. REPOSITORY / SOURCE OF TRUTH
+==================================================
+
+Repository:
+https://github.com/maissaramoheb/maissara-tech
+
+Production V1:
+https://maissara.tech
+
+Production V1 branch:
+main
+
+Production V1 commit:
+4defcc217a1e82d073ed45b82befc264a9c5573e
+
+Frozen V2 motion branch:
+v2-motion-poc
+
+Frozen V2 motion commit:
+ab887332028fa77291971efcbfff1a2005300551
+
+MANDATORY FIRST STEP:
+
+1. Fetch latest remote.
+2. Verify `v2-motion-poc` points exactly to:
+   ab887332028fa77291971efcbfff1a2005300551
+3. Read fully:
+   V2-MOTION-HANDOFF.md
+4. Treat that file as the authoritative motion specification.
+5. Create a NEW working branch from the frozen V2 commit:
+
+   v2-full-build
+
+Do not work directly on:
+- main
+- v2-motion-poc
+
+Do not modify production V1.
+
+==================================================
+1. V2 NORTH STAR
+==================================================
+
+Identity:
+
+OPERATIONAL INTELLIGENCE × CINEMATIC EDITORIAL
+
+Visual balance:
+
+90% cinematic editorial
+10% operational texture
+
+The website should feel:
+
+- sophisticated
+- premium
+- modern
+- restrained
+- analytical
+- institutional
+- confident
+- spatial
+- intelligent
+- technically polished
+
+It must NOT feel like:
+
+- military cosplay
+- defence contractor marketing
+- cyberpunk
+- hacking UI
+- generic SaaS
+- generic AI startup
+- gaming UI
+- overdesigned Awwwards experiment
+- Apple clone
+
+Apple is a reference only for:
+
+- pacing
+- scene continuity
+- confidence
+- spatial transformation
+- zoom hierarchy
+- progressive disclosure
+- “objects becoming other objects”
+
+Do not imitate Apple layouts, copy, typography, imagery, or product-page components.
+
+==================================================
+2. CORE PROFESSIONAL THESIS
+==================================================
+
+The entire site should visually reinforce:
+
+COMPLEXITY
+→ FIELD
+→ EVIDENCE
+→ ANALYSIS
+→ DECISION
+→ CAPABILITY
+
+This is the conceptual backbone of the V2.
+
+The website should communicate:
+
+“This person understands complex environments, thinks systematically, and builds practical systems.”
+
+The visitor should understand the professional evolution:
+
+operating
+→ teaching
+→ planning
+→ analysing
+→ building systems
+
+==================================================
+3. MOTION SYSTEM — FROZEN
+==================================================
+
+DO NOT redesign Scenes 00–04.
+
+Reuse and preserve the system defined in:
+
+V2-MOTION-HANDOFF.md
+
+That includes:
+
+- GSAP + ScrollTrigger
+- native browser scrolling
+- no global smooth-scroll replacement
+- desktop pinned storytelling
+- no mobile scroll traps
+- no fake telemetry
+- no fabricated metrics
+- exact domain taxonomy
+- FLS choreography
+- transform / opacity focused performance model
+- reduced-motion degradation
+- current palette
+- Geist Sans / Geist Mono
+
+Frozen narrative:
+
+SCENE 00 — Hero
+SCENE 01 — Complexity → Capability
+SCENE 02 — Operating Domains
+SCENE 03 — Thinking Becomes System
+SCENE 04 — Field Learning Studio
+
+Preserve exactly.
+
+==================================================
+4. EXACT OPERATING DOMAINS
+==================================================
+
+Use these titles exactly:
+
+1. PEACE & SECURITY
+2. STRATEGY & DECISION SYSTEMS
+3. LEARNING & HUMAN PERFORMANCE
+4. AI & DIGITAL SYSTEMS
+5. RESEARCH & INNOVATION
+
+Resolve with:
+
+SYSTEMS · PEOPLE · DECISIONS
+
+Do not substitute wording.
+
+==================================================
+5. FULL V2 SITE ARCHITECTURE
+==================================================
+
+Build:
+
+/
+  Cinematic flagship homepage
+
+/work
+  Complete selected systems / portfolio index
+
+/work/field-learning-studio
+  FLS case study
+
+/work/unpol-cbd
+  UNPOL CBD case study
+
+/work/ycps-toolkit-lab
+  YCPS Toolkit Lab case study
+
+/work/trifecta-performance-lab
+  Trifecta Performance Lab case study
+
+/research
+  Research themes, public outputs, DOI / ORCID
+
+/about
+  Professional profile and trajectory
+
+/contact
+  Professional contact / collaboration routes
+
+Do NOT use `/systems/...`.
+
+Keep `/work/...` as the canonical portfolio structure.
+
+==================================================
+6. HOMEPAGE — COMPLETE V2 STORYBOARD
+==================================================
+
+The homepage should become a continuous visual narrative.
+
+The first four scenes already exist and are frozen.
+
+Continue from the FLS reveal.
+
+--------------------------------------------------
+SCENE 05 — SELECTED SYSTEMS
+--------------------------------------------------
+
+Concept:
+
+DIFFERENT PROBLEMS.
+SAME DISCIPLINE.
+
+Do not repeat the full FLS cinematic sequence three more times.
+
+Instead, create a medium-intensity progression through:
+
+UNPOL CBD Planning Tool
+YCPS Toolkit Lab
+Trifecta Performance Lab
+
+Each project should use authentic assets only.
+
+No fabricated dashboards.
+No fake UI.
+No fictional user metrics.
+
+Each project should briefly transform the same analytical design language.
+
+A. UNPOL CBD
+
+Concept:
+context → stakeholders → synthesis → priorities → sequencing → implementation
+
+Use authentic project screenshot / UI.
+
+Visual language may evolve into:
+
+environment
+→ stakeholder relationships
+→ structured planning matrix
+→ sequencing
+
+Do not imply official United Nations endorsement.
+
+Always preserve the project qualifier:
+
+UNOFFICIAL / EDUCATIONAL & DECISION-SUPPORT PROTOTYPE
+
+Do not visually hide the disclaimer.
+
+Primary:
+EXPLORE CASE STUDY →
+
+Secondary:
+OPEN SYSTEM ↗
+
+Open system:
+https://unpol.maissara.tech
+
+Repository:
+https://github.com/maissaramoheb/unpol-cbd-planning-tool
+
+
+B. YCPS TOOLKIT LAB
+
+Concept:
+youth + climate + peace/security pressures
+→ risk pathways
+→ actors
+→ programme/policy responses
+→ review-ready outputs
+
+Use authentic project assets when available.
+
+If an authentic interface screenshot is not available, use a clearly labeled workflow visualization.
+
+Never label a constructed visualization as an interface screenshot.
+
+Primary:
+EXPLORE CASE STUDY →
+
+Repository:
+https://github.com/maissaramoheb/ycps-toolkit-lab
+
+
+C. TRIFECTA PERFORMANCE LAB
+
+Concept:
+learning domains
++ human performance
++ evidence
++ progression
+→ defensible trainer-development decisions
+
+Use the authentic Trifecta asset/UI.
+
+Avoid overusing its internal “tactical” aesthetic in the personal website.
+
+The surrounding maissara.tech environment remains cinematic/editorial.
+
+Primary:
+EXPLORE CASE STUDY →
+
+Repository:
+https://github.com/maissaramoheb/trifecta-performance-lab
+
+
+Scene pacing:
+
+FLS = highest visual intensity
+UNPOL = medium-high
+YCPS = medium
+Trifecta = medium
+
+The page should never feel like four identical product demos.
+
+==================================================
+7. PROFESSIONAL TRAJECTORY
+==================================================
+
+Heading:
+
+PRACTICE BEFORE PRODUCT.
+
+Supporting concept:
+
+The systems did not begin as software ideas.
+They emerged from recurring problems in operations, training, peace missions, planning and institutional work.
+
+Use this exact generalized trajectory:
+
+FIELD OPERATIONS & INVESTIGATIONS
+↓
+SPECIALIZED SECURITY OPERATIONS
+↓
+UN PEACE OPERATIONS
+↓
+TRAINING & CAPABILITY DEVELOPMENT
+↓
+PLANNING · POLICY · ORGANIZATIONAL PERFORMANCE
+↓
+AI · RESEARCH · DIGITAL SYSTEMS
+
+Do NOT turn this into a conventional resume timeline.
+
+Desired visual transformation:
+
+field line / terrain
+→ institutional path
+→ learning structure
+→ analytical grid
+→ digital system
+
+Motion intensity:
+MEDIUM
+
+Do not expose:
+
+- current internal unit structures
+- readiness data
+- personnel data
+- equipment
+- operational procedures
+- classified/restricted institutional information
+
+Use generalized professional language only.
+
+==================================================
+8. RESEARCH — HOMEPAGE
+==================================================
+
+This section should slow down visually.
+
+Increase negative space.
+
+Use large research questions rather than generic cards.
+
+Theme 01:
+
+HUMAN–AI DECISION-MAKING IN HIGH-STAKES ENVIRONMENTS
+
+Question direction:
+How should humans and AI share judgment when consequences matter?
+
+Theme 02:
+
+AI & DATA-DRIVEN DECISION SUPPORT IN PEACE OPERATIONS, POLICING & SECURITY-SECTOR REFORM
+
+Question direction:
+How can data support professional judgment without replacing it?
+
+Theme 03:
+
+TRAINING, HUMAN PERFORMANCE & DECISION-MAKING IN COMPLEX OPERATIONS
+
+Question direction:
+How do people learn and perform under complexity, pressure and uncertainty?
+
+Actions:
+
+RESEARCH →
+ORCID ↗
+PUBLIC OUTPUTS / DOI ↗
+
+ORCID:
+https://orcid.org/0009-0004-3009-5888
+
+Known public DOI:
+https://doi.org/10.5281/zenodo.23079627
+
+Do not fabricate publications.
+
+Do not claim PhD candidature/status unless explicitly present in current verified content.
+
+==================================================
+9. MAISSARA LAB
+==================================================
+
+Heading:
+
+MAISSARA LAB
+
+Supporting:
+
+Experiments at the intersection of learning, decision-making and emerging technology.
+
+Purpose:
+
+Clearly separate:
+- flagship / substantial systems
+from
+- experimental / exploratory work
+
+Include:
+
+MISSION LEARNING DESIGN LAB
+
+Status:
+ACTIVE DEVELOPMENT
+
+Live:
+https://learninglab.maissara.tech
+
+Repository:
+https://github.com/maissaramoheb/mission-learning-design-lab
+
+Do not make experimental projects visually equal to flagship systems.
+
+Motion:
+light / playful but still controlled.
+
+No particles.
+No neon.
+No custom cursor.
+
+==================================================
+10. ABOUT — HOMEPAGE
+==================================================
+
+This section should become calm after the cinematic narrative.
+
+Minimal motion.
+
+Use:
+
+Maissara Selim is a security and peace-operations practitioner, trainer, researcher and builder working across operational practice, institutional learning, strategic planning and emerging technology.
+
+His professional experience spans policing and specialized security operations, United Nations peace operations, capacity development, planning and organizational performance.
+
+His current work increasingly focuses on translating practical field problems into structured methodologies, learning systems and digital decision-support tools.
+
+Do not place rank beside the name in the hero.
+
+If rank is included, use it only as a secondary credential in About/Experience.
+
+No hero portrait.
+
+A portrait may be added later, but V2 must not depend on one.
+
+Use the existing MS visual/monogram if needed.
+
+==================================================
+11. CONTACT — HOMEPAGE
+==================================================
+
+Closing statement:
+
+COMPLEX PROBLEM?
+
+START WITH THE SYSTEM AROUND IT.
+
+Categories:
+
+RESEARCH · ADVISORY · COLLABORATION · TRAINING · TECHNOLOGY
+
+Current public routes:
+
+GitHub:
+https://github.com/maissaramoheb
+
+ORCID:
+https://orcid.org/0009-0004-3009-5888
+
+Do not invent an email address.
+
+Do not show placeholder copy such as:
+
+“Contact details coming soon.”
+
+If no email is configured, simply show verified professional links.
+
+Design the code so a future contact email can be added from one centralized config value.
+
+Do not build a backend contact form unless explicitly required later.
+
+==================================================
+12. /WORK PAGE
+==================================================
+
+This is the calm portfolio index.
+
+No large pinned cinematic sequence.
+
+Use editorial presentation.
+
+Show:
+
+1. Field Learning Studio
+2. UNPOL CBD Planning Tool
+3. Youth, Climate, Peace & Security Toolkit Lab
+4. Trifecta Performance Lab
+
+For each:
+
+- project name
+- concise purpose
+- maturity/status
+- authentic visual
+- case study link
+- live system if applicable
+- repository
+- relevant qualifier/disclaimer
+
+FLS should remain visually primary.
+
+No fake client logos.
+No fake adoption metrics.
+No invented outcomes.
+
+==================================================
+13. CASE STUDY TEMPLATE
+==================================================
+
+All four flagship case-study routes should share one reusable architecture.
+
+Sections:
+
+01 / CONTEXT
+What professional problem exists?
+
+02 / PROBLEM
+Why is the problem difficult?
+
+03 / DESIGN PRINCIPLE
+What idea guided the system?
+
+04 / SYSTEM
+What was built?
+
+05 / WORKFLOW
+How does information move through the tool?
+
+06 / CURRENT STATE
+What is actually implemented today?
+
+07 / INTERFACE
+Authentic screenshots / visual walkthrough
+
+08 / BOUNDARIES
+Limitations, responsible-use notes, disclaimers
+
+09 / ACCESS
+Live system / repository / DOI where relevant
+
+These pages should feel analytical and editorial.
+
+Do not make them mini SaaS landing pages.
+
+==================================================
+14. FLS CASE STUDY — SOURCE-BOUND FACTS
+==================================================
+
+Use only facts supported by the current repository / README.
+
+FLS is:
+
+A human-led, browser-local field learning synthesis app for:
+
+- MEL
+- evaluation
+- donor reporting
+- programme learning teams
+
+Core workflow:
+
+raw field evidence
+→ source inventory
+→ evidence matrix
+→ findings
+→ lessons learned
+→ good practices
+→ recommendations
+→ QA review
+→ donor-ready learning brief
+
+Current implementation supports:
+
+- local study creation
+- questions / scope / framework
+- field-material import
+- qualification of observations
+- findings with supporting/challenging/qualifying relationships
+- lessons
+- practices
+- recommendations
+- Professional Draft
+- Final Review
+- working/professional export
+- browser-local persistence
+
+Important boundaries:
+
+- browser-local
+- no authentication/backend/collaboration service
+- no external AI generation
+- human qualification required
+- deterministic checks do not replace professional judgment
+- use fictional/sanitized demo data for testing
+
+Do not invent:
+- institutional adoption
+- client use
+- impact metrics
+- production SaaS claims
+
+==================================================
+15. UNPOL CASE STUDY — SOURCE-BOUND FACTS
+==================================================
+
+Full name:
+
+UNPOL Capacity-Building & Development Integrated Planning Tool
+
+Status:
+
+UNOFFICIAL
+EDUCATIONAL & DECISION-SUPPORT PROTOTYPE
+ACTIVE DEVELOPMENT
+
+Purpose:
+
+Support structured analysis and planning for:
+
+- UNPOL advisory teams
+- Security Sector Reform specialists
+- peace operations planners
+- Rule of Law practitioners
+- training / academic users
+
+Planning journey:
+
+1. Context & Mandate
+2. Diagnostic Analysis
+3. Stakeholders & Ownership
+4. Analysis Synthesis
+5. CBD Priorities
+6. Prioritization & Sequencing
+7. Results & Implementation
+
+Export is separate.
+
+Use PESTEL-S wording where relevant.
+
+Important disclaimer:
+
+It is NOT:
+- official UN doctrine
+- a representation of the United Nations
+- a replacement for mandates
+- official guidance
+- host-state law
+- human-rights due diligence
+- command approval
+- verified country analysis
+
+Do not visually minimize this disclaimer.
+
+Do not claim automated strategic decision-making.
+
+==================================================
+16. YCPS CASE STUDY — SOURCE-BOUND FACTS
+==================================================
+
+Full name:
+
+Youth, Climate, Peace and Security Toolkit Lab
+
+Purpose:
+
+Browser-based planning, training and policy-support workspace supporting African-context YCPS work.
+
+Audience includes:
+
+- policymakers
+- practitioners
+- trainers
+- youth actors
+- climate practitioners
+- peacebuilding professionals
+
+Workflow:
+
+1. Context and scenario selection
+2. YCPS Matrix
+3. Risk Pathways
+4. Stakeholder Mapping
+5. Toolkit and Session Builder
+6. Review and wording screen
+7. Final output package
+
+Main components:
+
+- YCPS Matrix
+- Risk Pathway Builder
+- Stakeholder Workspace
+- Case Studies
+- Training Simulator
+- Language Assistant
+- Toolkit Builder
+- Review Workspace
+- Policy Brief / Export
+
+Current version:
+v0.4.8 — Archival and Zenodo Integration Release
+
+Important boundaries:
+
+- browser-based
+- local browser persistence
+- no central operational database
+- no automated institutional validation
+- prototype access gate for controlled demonstration
+- supports professional judgment rather than replacing it
+
+Do not claim institutional endorsement.
+
+==================================================
+17. TRIFECTA CASE STUDY — SOURCE-BOUND FACTS
+==================================================
+
+Full name:
+
+Trifecta Performance Lab
+
+Positioning:
+
+Arabic-first bilingual trainer-development application.
+
+Focus:
+
+- Learning Domains
+- Trifecta performance framework
+- evidence-based assessment
+- station design
+- AAR
+- progression
+
+Learning domains:
+
+- Cognitive
+- Psychomotor
+- Affective
+
+Performance dimensions include:
+
+- Physical
+- Technical
+- Cognitive / Neurophysiological
+
+Architecture:
+
+Curriculum
+→ Levels
+→ Stations
+→ Drills
+
+Assessment progression:
+
+evidence-based Gate decisions:
+
+- Go
+- No-Go
+- Need More Data
+- Retest
+
+Important safety rule:
+
+Critical Safety Failure is non-compensable.
+
+Capabilities include:
+
+- Evidence Chain
+- guided cases
+- calibration tools
+- performance profile
+- AAR
+- intervention tools
+- Arabic RTL
+- English LTR
+- local storage
+- print/PDF
+- JSON station export
+- offline core content
+
+Important boundaries:
+
+- local-first
+- no cloud database
+- not a clinical / neurological / personality assessment
+- does not teach operational tactics
+- some applied recommendations are explicitly marked
+
+Do not present tactical appearance as the core identity.
+
+==================================================
+18. /RESEARCH PAGE
+==================================================
+
+Build a calm editorial page.
+
+No large cinematic scroll runway.
+
+Structure:
+
+INTRO
+Research emerging from practice.
+
+THEME 01
+Human–AI Decision-Making in High-Stakes Environments
+
+THEME 02
+AI & Data-Driven Decision Support in Peace Operations, Policing & SSR
+
+THEME 03
+Training, Human Performance & Decision-Making in Complex Operations
+
+PUBLIC OUTPUTS
+
+Include only verified public outputs.
+
+Known:
+
+ORCID:
+https://orcid.org/0009-0004-3009-5888
+
+DOI:
+https://doi.org/10.5281/zenodo.23079627
+
+Do not fabricate:
+- journal articles
+- conference papers
+- doctoral status
+- affiliations not explicitly verified
+
+Design for easy future expansion.
+
+==================================================
+19. /ABOUT PAGE
+==================================================
+
+Create a deeper but concise professional profile.
+
+This is not a full CV dump.
+
+Organize around:
+
+PRACTICE
+PEACE OPERATIONS
+TRAINING
+PLANNING
+RESEARCH
+SYSTEM BUILDING
+
+Use the generalized trajectory.
+
+Possible secondary credential chips:
+
+LAW & POLICE SCIENCES
+MBA — AI IN BUSINESS ORGANIZATIONS
+UN PEACE OPERATIONS
+TRAINER DEVELOPMENT
+
+Keep operational security boundaries.
+
+Do not publish internal Black Cobra planning/database details.
+
+Do not publish readiness/personnel/equipment information.
+
+Do not publish sensitive unit structures.
+
+==================================================
+20. /CONTACT PAGE
+==================================================
+
+Very minimal.
+
+Headline:
+
+COMPLEX PROBLEM?
+START WITH THE SYSTEM AROUND IT.
+
+Areas:
+
+Research
+Advisory
+Collaboration
+Training
+Technology
+
+Links:
+
+GitHub
+ORCID
+
+Optional email architecture:
+
+Add a centralized config field such as:
+
+contactEmail?: string
+
+If empty:
+do not render an email CTA.
+
+Do not invent:
+contact@maissara.tech
+
+until actually configured.
+
+==================================================
+21. VISUAL SYSTEM
+==================================================
+
+Preserve the frozen system.
+
+Primary background:
+#0B0D0E
+
+Supporting dark:
+#111416 / similar existing surfaces
+
+Primary text:
+warm off-white
+
+Muted text:
+existing muted gray family
+
+Accent:
+#C69552
+
+Line:
+#222629 / existing structural line
+
+Typography:
+
+Geist Sans
+Geist Mono
+
+No new display serif.
+
+No new font family.
+
+Grid:
+
+12-column desktop
+strong vertical rhythm
+large negative space
+fine 1px rules
+minimal corner radius
+
+Avoid:
+
+- excessive cards
+- giant rounded SaaS containers
+- glassmorphism
+- gradients unless extremely restrained and already justified
+- neon
+- decorative blobs
+
+==================================================
+22. HOMEPAGE SPATIAL DESIGN
+==================================================
+
+The homepage should feel less like:
+
+CARD
+CARD
+CARD
+
+and more like:
+
+SCENE
+TRANSFORMATION
+OBJECT
+STATEMENT
+TRANSITION
+SCENE
+
+Use full-viewport visual chapters selectively.
+
+Do not make every section pinned.
+
+Only high-value sequences deserve major motion.
+
+==================================================
+23. MOTION GRAMMAR
+==================================================
+
+Every major animation must map to one of:
+
+REVEAL
+FOCUS
+EXPAND
+ASSEMBLE
+CONNECT
+RESOLVE
+RECEDE
+HAND-OFF
+
+If an animation has no conceptual purpose, do not add it.
+
+Allowed:
+
+- scale
+- translation
+- masks
+- clipping
+- opacity
+- SVG path progression
+- line extension
+- restrained spatial depth
+- structural hand-offs
+- pinned desktop scenes
+- controlled project-image focus
+
+Avoid:
+
+- random stagger
+- bouncing
+- springy UI
+- spins
+- large rotations
+- endless ambient motion
+- cursor-following
+- mouse spotlights
+- custom cursors
+- particles
+- WebGL
+- Three.js
+- fake 3D product models
+- scroll snapping
+- horizontal scroll replacement
+- Lenis/global smooth scroll
+
+==================================================
+24. MOBILE
+==================================================
+
+Mobile is NOT a compressed desktop cinematic experience.
+
+At <= 768px:
+
+- no viewport pin traps
+- no long scrub sequences
+- natural vertical flow
+- shorter transitions
+- simple reveal / focus / scale
+- progressively visible lines/nodes
+- authentic project screenshots
+- no horizontal overflow
+- touch targets >= appropriate accessibility size
+- no hover dependency
+
+Test:
+
+390 × 844
+430 × 932
+
+Preserve the zero-overflow guarantees already established in the frozen motion branch.
+
+==================================================
+25. REDUCED MOTION
+==================================================
+
+When:
+
+prefers-reduced-motion: reduce
+
+is active:
+
+- disable pinned scrub storytelling
+- remove large travel/zoom
+- remove continuous contour movement
+- present content statically
+- preserve all information
+- preserve all CTAs
+- preserve reading order
+
+The reduced-motion version must look intentional.
+
+==================================================
+26. PERFORMANCE
+==================================================
+
+Performance is a design requirement.
+
+Targets:
+
+LCP <= 2.5s
+CLS <= 0.10
+INP <= 200ms
+
+Aim:
+
+Mobile Lighthouse Performance >= 90
+Accessibility >= 95
+
+Rules:
+
+- Server Components by default
+- client components only where needed
+- route-scope GSAP
+- dynamic import cinematic logic if useful
+- preload only actual critical Hero assets
+- lazy-load project media
+- prewarm shortly before project sequences
+- optimize WebP/AVIF
+- use Next/Image appropriately
+- avoid layout animation
+- animate transform/opacity
+- clean ScrollTrigger instances on unmount
+- avoid unnecessary observers/listeners
+- no WebGL
+
+==================================================
+27. ACCESSIBILITY
+==================================================
+
+Verify:
+
+- semantic HTML
+- heading hierarchy
+- keyboard navigation
+- visible focus
+- landmarks
+- meaningful link labels
+- alt text
+- no motion-required information
+- contrast
+- touch targets
+- logical DOM order
+- reduced motion
+- no focus traps
+- mobile navigation semantics
+- skip-to-content
+
+Do not rely only on automated audits.
+
+==================================================
+28. NAVIGATION
+==================================================
+
+Desktop:
+
+WORK
+EXPERIENCE
+RESEARCH
+LAB
+ABOUT
+
+CONTACT ↗
+
+Add restrained current-section feedback.
+
+Example:
+fine brass rule or text-state change
+
+Do not add:
+- large page progress meter
+- tactical sidebar
+- coordinate navigation
+
+On deeper pages, use clear route-aware navigation.
+
+==================================================
+29. SEO / STRUCTURED DATA
+==================================================
+
+Maintain and extend:
+
+- canonical metadata
+- page-specific titles
+- descriptions
+- Open Graph
+- Twitter/social metadata
+- sitemap
+- robots
+- favicon/MS mark
+- JSON-LD
+
+Homepage:
+ProfilePage + Person
+
+Project pages:
+SoftwareApplication / CreativeWork only where appropriate and factually defensible.
+
+Do not claim:
+- official institutional affiliation
+- endorsements
+- usage statistics
+- awards
+unless verified.
+
+Create page-specific Open Graph imagery if it can be done using existing branding/assets without fabrication.
+
+==================================================
+30. CONTENT / DATA ARCHITECTURE
+==================================================
+
+Keep project, research, links and case-study content in structured data/config modules.
+
+Do not hardcode major content repeatedly across components.
+
+Preferred conceptual model:
+
+siteConfig
+identity
+domains
+projects
+researchThemes
+trajectory
+labProjects
+contact
+navigation
+
+Case studies should pull from structured project data where reasonable.
+
+Future additions should not require homepage rewrites.
+
+==================================================
+31. COMPONENT ARCHITECTURE
+==================================================
+
+Use reusable systems.
+
+Suggested conceptual components:
+
+SiteHeader
+MobileNav
+CinematicSequence
+TopographicField
+AnalyticalNodes
+MotionScene
+ProjectReveal
+SelectedSystemsSequence
+TrajectorySequence
+ResearchChapter
+LabSection
+AboutSection
+ContactSection
+
+WorkIndex
+CaseStudyHero
+CaseStudyChapter
+WorkflowDiagram
+ProjectBoundaryNote
+AccessLinks
+
+ResearchIndex
+AboutProfile
+ContactPage
+
+Do not over-componentize tiny elements.
+
+==================================================
+32. ROUTE TRANSITIONS
+==================================================
+
+Do not add elaborate SPA-style transitions merely for spectacle.
+
+If route transitions are implemented:
+
+- short
+- restrained
+- opacity/translate
+- no loading theater
+- no long delays
+
+Navigation should remain fast.
+
+==================================================
+33. PHOTOGRAPHY
+==================================================
+
+V2 must NOT depend on a portrait.
+
+Do not block implementation on photography.
+
+If existing field/training imagery is unavailable or rights are unclear, do not invent or source random stock.
+
+Use the established visual system instead.
+
+==================================================
+34. SECURITY / REPUTATIONAL BOUNDARY
+==================================================
+
+Public site must demonstrate capability without disclosing sensitive operational information.
+
+Good generalized wording:
+
+Specialized Security Operations
+Peace Operations
+Training & Capability Development
+Planning & Organizational Performance
+
+Do NOT publish:
+
+- internal unit structures
+- deployment readiness
+- personnel numbers unless already explicitly public and approved
+- equipment readiness
+- classified systems
+- sensitive TCCC/internal training material
+- internal Black Cobra planning systems
+- operational tactics
+- current security procedures
+
+Do not imply official United Nations endorsement.
+
+==================================================
+35. SOURCE INTEGRITY
+==================================================
+
+For project facts:
+
+Use:
+- existing project READMEs
+- current repository content
+- current site data
+- verified public links
+
+Do NOT invent:
+- users
+- customers
+- institutional adoption
+- results
+- impact metrics
+- endorsements
+- testimonials
+- project maturity claims beyond current source material
+
+If information is unavailable:
+omit it.
+
+Do not “complete” missing case-study content with generic marketing language.
+
+==================================================
+36. BUILD STRATEGY
+==================================================
+
+Implement the complete V2 on:
+
+v2-full-build
+
+Do not merge to main.
+
+Recommended internal execution order:
+
+PHASE A
+Preserve / stabilize frozen motion architecture.
+
+PHASE B
+Build homepage remainder:
+- systems
+- trajectory
+- research
+- lab
+- about
+- contact
+
+PHASE C
+Build route architecture and shared page shell.
+
+PHASE D
+Build `/work` and 4 case studies.
+
+PHASE E
+Build `/research`, `/about`, `/contact`.
+
+PHASE F
+Responsive / reduced motion / accessibility.
+
+PHASE G
+SEO / metadata / structured data.
+
+PHASE H
+Performance optimization.
+
+PHASE I
+Full QA.
+
+This execution order is internal only.
+
+Do not stop after each phase asking for confirmation.
+
+Complete the whole build unless blocked by a genuinely missing required fact.
+
+==================================================
+37. QA MATRIX
+==================================================
+
+Test all major pages at:
+
+1440 × 900
+1280 × 800
+1024 × 768
+768 × 1024
+430 × 932
+390 × 844
+
+Test:
+
+- Chrome
+- Safari/WebKit where available
+
+Verify:
+
+- no horizontal overflow
+- no layout shift
+- no broken assets
+- no console errors
+- no hydration errors
+- no broken routes
+- no dead links
+- all external links correct
+- all CTAs correct
+- mobile menu
+- keyboard navigation
+- reduced motion
+- scroll restoration
+- pinned scenes lifecycle
+- route navigation after ScrollTrigger use
+- deep-page direct loads
+- metadata
+- sitemap
+- robots
+- OG
+- structured data
+
+==================================================
+38. AUTOMATED CHECKS
+==================================================
+
+Run at minimum:
+
+npm run lint
+npm run typecheck
+npm run build
+
+If tests exist:
+run them.
+
+Add focused tests if useful for:
+
+- route integrity
+- data configuration
+- reduced-motion conditions
+- navigation
+- mobile overflow
+
+Do not build a huge test suite merely for coverage metrics.
+
+==================================================
+39. PREVIEW DEPLOYMENT
+==================================================
+
+After local QA passes:
+
+Create a Vercel PREVIEW deployment from:
+
+v2-full-build
+
+Do not promote to production.
+
+Do not assign:
+
+maissara.tech
+
+Do not modify production aliases.
+
+Production V1 must remain untouched.
+
+==================================================
+40. SCREENSHOTS
+==================================================
+
+Capture final preview screenshots at minimum:
+
+DESKTOP
+
+1. Hero
+2. Complexity/Capability
+3. FLS
+4. Selected Systems
+5. Trajectory
+6. Research
+7. Lab/About
+8. Contact
+9. /work
+10. each case-study hero
+11. /research
+12. /about
+
+MOBILE
+
+13. Hero
+14. systems
+15. trajectory/research
+16. contact
+17. one case-study
+18. /work
+
+==================================================
+41. VIDEO
+==================================================
+
+Capture a desktop video showing:
+
+Hero
+→ Complexity
+→ Domains
+→ FLS
+→ other systems
+→ trajectory
+→ research
+→ final contact
+
+Use at least 30fps.
+
+The video is for review of pacing and continuity.
+
+Do not claim 60fps unless the exported recording is actually 60fps.
+
+==================================================
+42. FINAL IMPLEMENTATION REPORT
+==================================================
+
+Return a concise but complete report with:
+
+A. Branch
+B. Final commit SHA
+C. Preview URL
+D. Routes built
+E. Components added/changed
+F. Dependencies added
+G. Motion architecture
+H. Mobile behavior
+I. Reduced-motion behavior
+J. Accessibility results
+K. Performance observations
+L. Lint/typecheck/build results
+M. Broken-link results
+N. Screenshots location
+O. Video location
+P. Any factual/content gaps intentionally omitted
+Q. Any remaining issue
+
+==================================================
+43. DO NOT DO
+==================================================
+
+Do not:
+
+- merge to main
+- deploy to production
+- replace maissara.tech
+- redesign frozen Scenes 00–04
+- invent new branding
+- add WebGL
+- add Three.js
+- add custom cursor
+- add particles
+- add music
+- add autoplay sound
+- add scroll hijacking
+- add smooth-scroll libraries globally
+- add magnetic section tags
+- create fictional metrics
+- create fake client logos
+- fabricate publications
+- fabricate operational data
+- fabricate emails
+- add CMS/backend/auth unless strictly required by existing functionality
+- build a blog
+- turn every section into a pinned animation
+- overuse tactical language
+
+==================================================
+44. DEFINITION OF DONE
+==================================================
+
+V2 is considered implementation-complete only if:
+
+1. It feels substantially more sophisticated than V1.
+2. It preserves the approved motion language.
+3. Scenes 00–04 remain faithful to the frozen branch.
+4. The rest of the homepage feels like the same design system.
+5. FLS remains the flagship.
+6. UNPOL / YCPS / Trifecta each feel distinct.
+7. Career trajectory explains professional evolution.
+8. Research feels intellectually serious.
+9. Lab clearly separates experimentation from flagship work.
+10. Mobile feels intentionally designed.
+11. Reduced motion remains complete.
+12. Deep pages are useful without cinematic gimmicks.
+13. Performance remains strong.
+14. No unsupported public claims are introduced.
+15. Production V1 remains untouched.
+16. A reviewable Vercel Preview is available.
+
+==================================================
+45. FINAL INSTRUCTION
+==================================================
+
+Do not optimize for “more animation.”
+
+Optimize for:
+
+MEANINGFUL TRANSFORMATION
++
+EDITORIAL CONFIDENCE
++
+PROFESSIONAL CREDIBILITY
++
+TECHNICAL PRECISION
+
+The V2 should feel like one coherent professional system, not a collection of effects.
+
+Complete the full implementation, QA it thoroughly, create the preview, and then STOP.
+
+Do not merge or promote to production.

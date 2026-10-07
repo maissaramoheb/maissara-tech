@@ -4,6 +4,7 @@ export const site = {
   description:
     "Maissara Selim works across operational practice, peace and security, institutional learning, strategic planning, research and emerging technology—turning complex field problems into structured decisions, tools and capability.",
   // Set a verified mailto: or contact URL before publication. Never infer an email.
+  contactEmail: undefined as string | undefined,
   contact: { href: null as string | null, label: "Start a conversation" },
   github: "https://github.com/maissaramoheb",
   orcid: "https://orcid.org/0009-0004-3009-5888",
@@ -131,4 +132,21 @@ export const biography = [
   "Maissara Selim is a security and peace-operations practitioner, trainer, researcher and builder working across operational practice, institutional learning, strategic planning and emerging technology.",
   "His professional experience spans policing and specialized security operations, United Nations peace operations, capacity development, planning and organizational performance.",
   "His current work increasingly focuses on translating practical field problems into structured methodologies, learning systems and digital decision-support tools.",
+];
+
+export const researchThemes = [
+ { title:'HUMAN–AI DECISION-MAKING IN HIGH-STAKES ENVIRONMENTS', question:'How should humans and AI share judgment when consequences matter?' },
+ { title:'AI & DATA-DRIVEN DECISION SUPPORT IN PEACE OPERATIONS, POLICING & SECURITY-SECTOR REFORM', question:'How can data support professional judgment without replacing it?' },
+ { title:'TRAINING, HUMAN PERFORMANCE & DECISION-MAKING IN COMPLEX OPERATIONS', question:'How do people learn and perform under complexity, pressure and uncertainty?' },
+];
+export const professionalTrajectory = ['FIELD OPERATIONS & INVESTIGATIONS','SPECIALIZED SECURITY OPERATIONS','UN PEACE OPERATIONS','TRAINING & CAPABILITY DEVELOPMENT','PLANNING · POLICY · ORGANIZATIONAL PERFORMANCE','AI · RESEARCH · DIGITAL SYSTEMS'];
+export const credentials = ['LAW & POLICE SCIENCES','MBA — AI IN BUSINESS ORGANIZATIONS','UN PEACE OPERATIONS','TRAINER DEVELOPMENT'];
+export const contactAreas = ['Research','Advisory','Collaboration','Training','Technology'];
+export const profileAreas = [
+ { title:'PRACTICE', copy:'Operational practice provides the starting point: understanding complex environments and the limits of information available to practitioners.' },
+ { title:'PEACE OPERATIONS', copy:'United Nations peace operations connect field experience with institutional mandates, capacity development and professional judgment.' },
+ { title:'TRAINING', copy:'Training and trainer development translate experience into learning structures, assessment and capability.' },
+ { title:'PLANNING', copy:'Planning, policy and organizational performance turn knowledge into priorities, sequencing and implementation.' },
+ { title:'RESEARCH', copy:'Interdisciplinary inquiry connects practical questions with evidence, decision-making and emerging technology.' },
+ { title:'SYSTEM BUILDING', copy:'Digital workbenches and methodologies structure recurring professional problems while keeping people responsible for consequential decisions.' },
 ];

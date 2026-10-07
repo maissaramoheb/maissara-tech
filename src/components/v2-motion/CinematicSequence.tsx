@@ -2,15 +2,10 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 import { Contours } from "@/components/visuals";
 import { Progression } from "@/components/reveal";
 import { Label } from "@/components/sections";
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
 
 // Exact approved Operating Domains taxonomy (Section 7)
 const DOMAINS_LIST = [
@@ -88,21 +83,24 @@ export function CinematicSequence() {
   useEffect(() => {
     if (!runwayRef.current || !stageRef.current) return;
 
-    // Check prefers-reduced-motion
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    if (prefersReducedMotion) {
-      return;
-    }
-
-    const mm = gsap.matchMedia();
+    let cancelled = false;
+    let started = false;
+    let cleanup = () => {};
+    const media = window.matchMedia("(min-width: 769px) and (prefers-reduced-motion: no-preference)");
+    const initialize = () => {
+      if (started || cancelled || !media.matches) return;
+      started = true;
+      void Promise.all([import("gsap"), import("gsap/ScrollTrigger")]).then(
+      ([{ default: gsap }, { ScrollTrigger }]) => {
+        if (cancelled) return;
+        gsap.registerPlugin(ScrollTrigger);
+        const mm = gsap.matchMedia();
 
     // ========================================================================
     // DESKTOP & TABLET CINEMATIC TIMELINE (> 768px)
     // ========================================================================
-    mm.add("(min-width: 769px)", () => {
+    mm.add("(min-width: 769px) and (prefers-reduced-motion: no-preference)", () => {
+      if (flsSceneRef.current) flsSceneRef.current.inert = true;
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: runwayRef.current,
@@ -113,6 +111,9 @@ export function CinematicSequence() {
           anticipatePin: 1,
           onUpdate: (self) => {
             const p = self.progress;
+            // Integration: hidden scenes must not intercept clicks or keyboard focus.
+            if (heroRef.current) heroRef.current.inert = p > 0.10;
+            if (flsSceneRef.current) flsSceneRef.current.inert = p < 0.96;
 
             // Restrained editorial status updates (Section 3)
             if (p < 0.12) {
@@ -536,7 +537,9 @@ export function CinematicSequence() {
     // MOBILE BEHAVIOR (<= 768px & 390px)
     // Clean, legible vertical flow without pin traps or scroll conflicts
     // ========================================================================
-    mm.add("(max-width: 768px)", () => {
+    mm.add("(max-width: 768px), (prefers-reduced-motion: reduce)", () => {
+      if (heroRef.current) heroRef.current.inert = false;
+      if (flsSceneRef.current) flsSceneRef.current.inert = false;
       gsap.set(
         [
           heroRef.current,
@@ -552,8 +555,16 @@ export function CinematicSequence() {
       );
     });
 
+        cleanup = () => mm.revert();
+      }
+      );
+    };
+    initialize();
+    media.addEventListener("change", initialize);
     return () => {
-      mm.revert();
+      cancelled = true;
+      media.removeEventListener("change", initialize);
+      cleanup();
     };
   }, []);
 
@@ -646,6 +657,7 @@ export function CinematicSequence() {
             ================================================================ */}
         <div ref={analyticalRef} className="v2-analytical-stage">
           <div className="v2-analytical-container">
+            <h2 className="sr-only">Complexity to capability</h2>
             {/* Step narratives */}
             <div className="v2-stage-narrative">
               <div className="v2-step-narrative-a">
@@ -1113,21 +1125,21 @@ export function CinematicSequence() {
 
           {/* FLS Final Frame: Exact Approved Headline, Statement & CTAs (Section 11) */}
           <div className="v2-fls-final-statement">
-            <h3 className="v2-fls-final-title">FIELD LEARNING STUDIO</h3>
+            <h2 className="v2-fls-final-title">FIELD LEARNING STUDIO</h2>
             <p className="v2-fls-final-desc">
               A human-led analytical workbench for turning field evidence into defensible institutional learning.
             </p>
             <div ref={ctaRowRef} className="v2-fls-cta-row">
-              <a className="button-primary" href="#fls-case-study">
+              <Link className="button-primary" href="/work/field-learning-studio">
                 EXPLORE CASE STUDY →
-              </a>
+              </Link>
               <a
                 className="button-secondary"
                 href="https://fls.maissara.tech"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
-                OPEN SYSTEM <span aria-hidden="true">↗</span>
+                OPEN SYSTEM <span aria-hidden="true">↗</span><span className="sr-only"> (opens in a new tab)</span>
               </a>
             </div>
           </div>
