@@ -282,7 +282,7 @@ export function ResearchChapter({ deep = false }: { deep?: boolean }) {
         )}
         <ExternalLink href={site.orcid}>ORCID</ExternalLink>
         <ExternalLink href="https://doi.org/10.5281/zenodo.23079627">
-          PUBLIC OUTPUTS / DOI
+          SOFTWARE RECORD / DOI
         </ExternalLink>
       </div>
     </section>
@@ -381,6 +381,13 @@ export function ContactSection({ deep = false }: { deep?: boolean }) {
         <br />
         <span>START WITH THE SYSTEM AROUND IT.</span>
       </Heading>
+      {deep && (
+        <p className="editorial-description">
+          Potential collaborations may include applied research, institutional
+          advisory work, training and capability development, and digital systems
+          built around complex professional workflows.
+        </p>
+      )}
       <p className="contact-categories">
         {contactAreas.join(" · ").toUpperCase()}
       </p>

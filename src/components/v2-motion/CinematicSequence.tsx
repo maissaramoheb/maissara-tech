@@ -101,6 +101,7 @@ export function CinematicSequence() {
     // ========================================================================
     mm.add("(min-width: 769px) and (prefers-reduced-motion: no-preference)", () => {
       if (flsSceneRef.current) flsSceneRef.current.inert = true;
+      const handoffIndicator = runwayRef.current?.querySelector<HTMLElement>(".v2-handoff-indicator");
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: runwayRef.current,
@@ -111,6 +112,8 @@ export function CinematicSequence() {
           anticipatePin: 1,
           onUpdate: (self) => {
             const p = self.progress;
+            // Hide the outgoing hint immediately at pin release, including scrub lag.
+            if (handoffIndicator) handoffIndicator.style.visibility = p >= 1 ? "hidden" : "";
             // Integration: hidden scenes must not intercept clicks or keyboard focus.
             if (heroRef.current) heroRef.current.inert = p > 0.10;
             if (flsSceneRef.current) flsSceneRef.current.inert = p < 0.96;
@@ -527,9 +530,14 @@ export function CinematicSequence() {
         ".v2-handoff-indicator",
         {
           opacity: 1,
-          duration: 0.03,
+          duration: 0.01,
         },
         0.97
+      );
+      tl.to(
+        ".v2-handoff-indicator",
+        { opacity: 0, duration: 0.02, ease: "none" },
+        0.98
       );
     });
 
@@ -1144,7 +1152,7 @@ export function CinematicSequence() {
             </div>
           </div>
 
-          <div className="v2-handoff-indicator" aria-hidden="true">
+          <div className="v2-handoff-indicator" aria-hidden="true" style={{ pointerEvents: "none" }}>
             <span>SCROLL TO CONTINUE TO REMAINING SYSTEMS</span>
             <span>↓</span>
           </div>
