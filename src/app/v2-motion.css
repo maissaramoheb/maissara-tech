@@ -509,20 +509,85 @@
   color: var(--line);
 }
 
-/* Bottom CTA bar on final reveal */
-.v2-fls-cta-row {
-  margin-top: 24px;
-  display: flex;
-  align-items: center;
-  gap: 24px;
+/* Contour Beacons for Hero -> Field continuity */
+.v2-contour-beacon {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 16px rgba(198, 149, 82, 0.6);
   opacity: 0;
-  transform: translateY(10px);
+  transform: scale(0);
+  pointer-events: none;
+  z-index: 6;
+}
+
+.v2-contour-beacon::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+/* FLS Final Frame Statement & Action Suite */
+.v2-fls-final-statement {
+  margin-top: 24px;
+  text-align: center;
+  max-width: 680px;
+  opacity: 0;
+  transform: translateY(12px);
+  z-index: 25;
+}
+
+.v2-fls-final-title {
+  font-size: clamp(22px, 2.4vw, 32px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.v2-fls-final-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.v2-fls-cta-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.button-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 17px 21px;
+  font-size: 12px;
+  font-weight: 550;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.button-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 /* Smooth hand-off indicator into V1 */
 .v2-handoff-indicator {
   position: absolute;
-  bottom: 24px;
+  bottom: 20px;
   font-family: var(--font-geist-mono), monospace;
   font-size: 10px;
   letter-spacing: 0.12em;

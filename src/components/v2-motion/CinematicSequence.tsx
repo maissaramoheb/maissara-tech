@@ -12,31 +12,32 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
+// Exact approved Operating Domains taxonomy (Section 7)
 const DOMAINS_LIST = [
   {
     title: "PEACE & SECURITY",
-    desc: "Peace operations, policing, security-sector development and complex operational theaters.",
-    focus: "THEATER / ACTORS / STRUCTURE",
+    desc: "Peace operations, policing, security-sector governance and complex operational environments.",
+    focus: "GOVERNANCE · INSTITUTIONAL CONTINUITY",
   },
   {
     title: "STRATEGY & DECISION SYSTEMS",
-    desc: "Planning, policy, analysis, monitoring, organizational performance and decision support.",
-    focus: "PRIORITIES / SEQUENCING / RISK",
+    desc: "Planning frameworks, strategic policy, monitoring, risk modeling and decision support.",
+    focus: "DECISION CRITERIA · SEQUENCING",
   },
   {
     title: "LEARNING & HUMAN PERFORMANCE",
-    desc: "Training design, trainer development, scenario-based learning and human performance.",
-    focus: "PROGRESSION / CAPABILITY / PEOPLE",
+    desc: "Methodology-driven training design, scenario-based inquiry and institutional capacity.",
+    focus: "HUMAN JUDGMENT · PERFORMANCE",
   },
   {
     title: "AI & DIGITAL SYSTEMS",
-    desc: "Applied AI, human–AI interaction and digital tools designed around real professional workflows.",
-    focus: "HUMAN-IN-THE-LOOP / DECISION AUGMENTATION",
+    desc: "Applied AI architectures, analytical tools and digital systems built around practitioner workflows.",
+    focus: "HUMAN-IN-THE-LOOP · AUGMENTATION",
   },
   {
     title: "RESEARCH & INNOVATION",
-    desc: "Interdisciplinary inquiry connecting practice, evidence, decision-making and emerging technology.",
-    focus: "EMPIRICAL EVIDENCE / SYNTHESIS",
+    desc: "Interdisciplinary inquiry connecting field evidence, rigorous analysis and practical tooling.",
+    focus: "EMPIRICAL SYNTHESIS · TOOLS",
   },
 ];
 
@@ -63,10 +64,26 @@ export function CinematicSequence() {
   const flsImageRef = useRef<HTMLDivElement>(null);
   const ctaRowRef = useRef<HTMLDivElement>(null);
 
-  // Dynamic telemetry states
-  const [telemetryPhase, setTelemetryPhase] = useState("SCENE 00 / IDENTITY");
-  const [telemetryCoord, setTelemetryCoord] = useState("04°12'N · 31°35'E");
+  // Dynamic telemetry states (Restrained editorial metadata only — no fake GPS or fake math)
+  const [telemetryPhase, setTelemetryPhase] = useState("MS. / SYSTEMS ARCHITECTURE");
+  const [telemetryContext, setTelemetryContext] = useState("METHODOLOGY · OBSERVE → ACT");
   const [activeWorkflowIndex, setActiveWorkflowIndex] = useState(0);
+
+  // Lazy prewarm of large FLS screenshot once user begins scrolling (Section 14)
+  useEffect(() => {
+    let prewarmed = false;
+    const handleScrollPrewarm = () => {
+      if (prewarmed) return;
+      if (window.scrollY > 200) {
+        prewarmed = true;
+        const img = new window.Image();
+        img.src = "/images/field-learning-studio.webp";
+        window.removeEventListener("scroll", handleScrollPrewarm);
+      }
+    };
+    window.addEventListener("scroll", handleScrollPrewarm, { passive: true });
+    return () => window.removeEventListener("scroll", handleScrollPrewarm);
+  }, []);
 
   useEffect(() => {
     if (!runwayRef.current || !stageRef.current) return;
@@ -77,7 +94,6 @@ export function CinematicSequence() {
     ).matches;
 
     if (prefersReducedMotion) {
-      // In reduced-motion mode, keep elements statically legible without pinning
       return;
     }
 
@@ -91,42 +107,44 @@ export function CinematicSequence() {
         scrollTrigger: {
           trigger: runwayRef.current,
           start: "top top",
-          end: "+=320%",
+          end: "+=340%",
           pin: stageRef.current,
           scrub: 1,
           anticipatePin: 1,
           onUpdate: (self) => {
             const p = self.progress;
-            if (p < 0.15) {
-              setTelemetryPhase("SCENE 00 / IDENTITY");
-              setTelemetryCoord("04°12'N · 31°35'E");
-            } else if (p < 0.23) {
-              setTelemetryPhase("SCENE 01 / STEP A — FIELD");
-              setTelemetryCoord("04°14'N · 31°36'E · RAW TERRAIN");
+
+            // Restrained editorial status updates (Section 3)
+            if (p < 0.12) {
+              setTelemetryPhase("MS. / SYSTEMS ARCHITECTURE");
+              setTelemetryContext("METHODOLOGY · OBSERVE → ACT");
+            } else if (p < 0.22) {
+              setTelemetryPhase("01 / FIELD");
+              setTelemetryContext("OBSERVATIONS");
             } else if (p < 0.32) {
-              setTelemetryPhase("SCENE 01 / STEP B — EVIDENCE");
-              setTelemetryCoord("04°16'N · 31°38'E · TRACEABLE RECORDS");
-            } else if (p < 0.40) {
-              setTelemetryPhase("SCENE 01 / STEP C — ANALYSIS");
-              setTelemetryCoord("CROSS-SECTOR VECTORS · r=0.84");
-            } else if (p < 0.47) {
-              setTelemetryPhase("SCENE 01 / STEP D — DECISION");
-              setTelemetryCoord("CRITERIA MATRIX · NOISE REDUCED");
-            } else if (p < 0.54) {
-              setTelemetryPhase("SCENE 01 / STEP E — CAPABILITY");
-              setTelemetryCoord("STRUCTURED REPEATABLE SYSTEM");
-            } else if (p < 0.68) {
-              setTelemetryPhase("SCENE 02 / OPERATING DOMAINS");
-              setTelemetryCoord("INTERDISCIPLINARY PRACTICE");
-            } else if (p < 0.78) {
-              setTelemetryPhase("SCENE 03 / THINKING → SYSTEM");
-              setTelemetryCoord("MORPHOLOGICAL CONVERGENCE");
+              setTelemetryPhase("01 / EVIDENCE");
+              setTelemetryContext("TRACEABLE RECORDS");
+            } else if (p < 0.42) {
+              setTelemetryPhase("01 / ANALYSIS");
+              setTelemetryContext("RELATIONSHIPS");
+            } else if (p < 0.52) {
+              setTelemetryPhase("01 / DECISION");
+              setTelemetryContext("PRIORITIES");
+            } else if (p < 0.62) {
+              setTelemetryPhase("01 / CAPABILITY");
+              setTelemetryContext("STRUCTURED SYSTEM");
+            } else if (p < 0.74) {
+              setTelemetryPhase("02 / OPERATING DOMAINS");
+              setTelemetryContext("INTERDISCIPLINARY PRACTICE");
+            } else if (p < 0.80) {
+              setTelemetryPhase("03 / METHODOLOGY TO SYSTEM");
+              setTelemetryContext("THINKING BECOMES SYSTEM");
             } else {
-              setTelemetryPhase("SCENE 04 / FIELD LEARNING STUDIO");
-              setTelemetryCoord("fls.maissara.tech · PRODUCTION ACTIVE");
+              setTelemetryPhase("04 / FIELD LEARNING STUDIO");
+              setTelemetryContext("PRODUCTION WORKBENCH · fls.maissara.tech");
             }
 
-            // Workflow progression active step
+            // Workflow progression active step during FLS internal focus (Section 10)
             if (p < 0.82) {
               setActiveWorkflowIndex(0); // EVIDENCE
             } else if (p < 0.86) {
@@ -143,95 +161,116 @@ export function CinematicSequence() {
       });
 
       // ----------------------------------------------------------------------
-      // SCENE 00: HERO TRANSITION (0.00 -> 0.15)
-      // Subtle recession of hero typography; camera advances "into" contours
+      // SCENE 00 -> SCENE 01: HERO TO FIELD CONTINUOUS TRANSITION (0.00 -> 0.14)
+      // No blank frame; contours enlarge and observation beacons ignite on ridges
       // ----------------------------------------------------------------------
+      // Hero typography recedes smoothly
       tl.to(
         heroRef.current,
         {
-          scale: 0.86,
+          scale: 0.90,
           opacity: 0,
-          y: -50,
-          duration: 0.15,
+          y: -40,
+          duration: 0.10,
           ease: "power2.inOut",
         },
         0
       );
 
+      // Topographic contours advance and enlarge
       tl.to(
         topoRef.current,
         {
-          scale: 1.5,
-          opacity: 0.35,
-          duration: 0.2,
+          scale: 1.45,
+          opacity: 0.32,
+          duration: 0.18,
           ease: "none",
         },
         0
       );
 
+      // Telemetry fades in gently as scroll begins
       tl.to(
         telemetryRef.current,
         {
           opacity: 1,
-          duration: 0.08,
+          duration: 0.05,
         },
-        0.05
+        0.04
       );
 
-      // ----------------------------------------------------------------------
-      // SCENE 01: COMPLEXITY → CAPABILITY (0.12 -> 0.54)
-      // ----------------------------------------------------------------------
-      // Reveal Analytical Canvas
+      // Analytical canvas fades in early (NO empty black interval!)
       tl.to(
         analyticalRef.current,
         {
           opacity: 1,
-          duration: 0.08,
+          duration: 0.06,
         },
-        0.12
+        0.04
       );
 
-      // Step A: Field Observations (Sparse dots)
+      // Contour beacons pulse on ridge intersections
+      tl.to(
+        ".v2-contour-beacon",
+        {
+          opacity: 1,
+          scale: 1,
+          stagger: 0.015,
+          duration: 0.05,
+        },
+        0.06
+      );
+
+      // Step A: Field Observations emerge directly at contour beacon locations
       tl.fromTo(
         ".v2-node-field",
         { opacity: 0, scale: 0 },
-        { opacity: 1, scale: 1, stagger: 0.02, duration: 0.08 },
-        0.14
+        { opacity: 1, scale: 1, stagger: 0.02, duration: 0.06 },
+        0.08
       );
 
-      // Step B: Field -> Evidence (Tags & additional observations appear)
+      tl.to(
+        ".v2-step-narrative-a",
+        { opacity: 1, y: 0, duration: 0.05 },
+        0.08
+      );
+
+      // ----------------------------------------------------------------------
+      // SCENE 01: COMPLEXITY → CAPABILITY MATRIX PROGRESSION (0.16 -> 0.60)
+      // ----------------------------------------------------------------------
+      // Step B: Field -> Evidence (Traceable records indexed with source provenance)
       tl.fromTo(
         ".v2-node-evidence",
-        { opacity: 0, y: 10 },
-        { opacity: 1, y: 0, stagger: 0.02, duration: 0.08 },
-        0.22
+        { opacity: 0, y: 8 },
+        { opacity: 1, y: 0, stagger: 0.02, duration: 0.06 },
+        0.20
       );
       tl.to(
         ".v2-step-narrative-b",
-        { opacity: 1, y: 0, duration: 0.06 },
-        0.22
+        { opacity: 1, y: 0, duration: 0.05 },
+        0.20
       );
       tl.to(
         ".v2-step-narrative-a",
-        { opacity: 0, y: -10, duration: 0.06 },
-        0.22
+        { opacity: 0, y: -10, duration: 0.05 },
+        0.20
       );
 
-      // Step C: Analysis (Restrained vectors & relationship lines form)
+      // Step C: Analysis (Restrained vectors & systemic relationships form)
       tl.fromTo(
         ".v2-vector-line",
         { strokeDashoffset: 100, opacity: 0 },
-        { strokeDashoffset: 0, opacity: 0.45, stagger: 0.02, duration: 0.08 },
+        { strokeDashoffset: 0, opacity: 0.45, stagger: 0.02, duration: 0.06 },
         0.30
       );
       tl.to(
         ".v2-step-narrative-c",
-        { opacity: 1, y: 0, duration: 0.06 },
+        { opacity: 1, y: 0, duration: 0.05 },
         0.30
       );
       tl.to(
         ".v2-step-narrative-b",
-        { opacity: 0, y: -10, duration: 0.06 },
+        { opacity: 0, y: -10, duration: 0.05 },
         0.30
       );
 
@@ -240,199 +279,256 @@ export function CinematicSequence() {
         ".v2-node-scatter",
         {
           opacity: 0.15,
-          scale: 0.7,
-          duration: 0.06,
+          scale: 0.75,
+          duration: 0.05,
         },
-        0.38
+        0.40
       );
       tl.fromTo(
         ".v2-matrix-column",
         { opacity: 0, scaleY: 0.4 },
-        { opacity: 1, scaleY: 1, stagger: 0.03, duration: 0.08 },
-        0.38
+        { opacity: 1, scaleY: 1, stagger: 0.025, duration: 0.07 },
+        0.40
       );
       tl.to(
         ".v2-step-narrative-d",
-        { opacity: 1, y: 0, duration: 0.06 },
-        0.38
+        { opacity: 1, y: 0, duration: 0.05 },
+        0.40
       );
       tl.to(
         ".v2-step-narrative-c",
-        { opacity: 0, y: -10, duration: 0.06 },
-        0.38
+        { opacity: 0, y: -10, duration: 0.05 },
+        0.40
       );
 
-      // Step E: Capability (Resolves into complete orderly system)
+      // Step E: Capability (Resolves into complete orderly system envelope)
       tl.fromTo(
         ".v2-capability-grid",
-        { opacity: 0, scale: 0.95 },
-        { opacity: 1, scale: 1, duration: 0.08 },
-        0.46
+        { opacity: 0, scale: 0.96 },
+        { opacity: 1, scale: 1, duration: 0.06 },
+        0.50
       );
       tl.to(
         ".v2-step-narrative-e",
-        { opacity: 1, y: 0, duration: 0.06 },
-        0.46
+        { opacity: 1, y: 0, duration: 0.05 },
+        0.50
       );
       tl.to(
         ".v2-step-narrative-d",
-        { opacity: 0, y: -10, duration: 0.06 },
-        0.46
+        { opacity: 0, y: -10, duration: 0.05 },
+        0.50
       );
 
       // ----------------------------------------------------------------------
-      // SCENE 02: OPERATING DOMAINS BRIDGE (0.54 -> 0.68)
+      // SCENE 02: OPERATING DOMAINS BRIDGE (0.60 -> 0.70)
+      // Exact approved 5 domains -> SYSTEMS · PEOPLE · DECISIONS
       // ----------------------------------------------------------------------
       tl.to(
         analyticalRef.current,
         {
-          opacity: 0.15,
-          scale: 0.92,
-          duration: 0.06,
+          opacity: 0.20,
+          scale: 0.94,
+          duration: 0.05,
         },
-        0.54
+        0.58
       );
 
       tl.to(
         domainsRef.current,
         {
           opacity: 1,
-          duration: 0.06,
+          duration: 0.05,
         },
-        0.54
+        0.58
       );
 
-      // 5 domains appear and highlight sequentially
+      // 5 approved domains sequence
       const domainItems = gsap.utils.toArray<HTMLElement>(".v2-domain-item");
       domainItems.forEach((item, idx) => {
-        const startT = 0.54 + idx * 0.024;
+        const startT = 0.58 + idx * 0.02;
         tl.fromTo(
           item,
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.02 },
+          { opacity: 0, y: 16 },
+          { opacity: 1, y: 0, duration: 0.018 },
           startT
         );
         if (idx < domainItems.length - 1) {
-          tl.to(item, { opacity: 0, y: -16, duration: 0.015 }, startT + 0.02);
+          tl.to(item, { opacity: 0, y: -12, duration: 0.012 }, startT + 0.018);
         }
       });
 
-      // Resolve all 5 into: SYSTEMS · PEOPLE · DECISIONS
+      // Resolve into: SYSTEMS · PEOPLE · DECISIONS
       tl.to(
         ".v2-domains-resolve",
         {
           opacity: 1,
           duration: 0.04,
         },
-        0.66
+        0.67
       );
 
       // ----------------------------------------------------------------------
-      // SCENE 03: THINKING BECOMES SYSTEM (0.68 -> 0.78)
-      // Morphological conversion: matrix columns & vectors expand into FLS frame
+      // SCENE 03: THINKING BECOMES SYSTEM (0.70 -> 0.77)
+      // Physical geometric morph: analytical columns snap and expand into FLS frame
       // ----------------------------------------------------------------------
       tl.to(
         domainsRef.current,
         {
           opacity: 0,
-          scale: 0.95,
-          duration: 0.05,
+          scale: 0.96,
+          duration: 0.04,
         },
-        0.68
+        0.70
       );
 
+      // Analytical grid morphs its proportions to match FLS application envelope
+      tl.to(
+        analyticalRef.current,
+        {
+          opacity: 0.45,
+          scale: 1.05,
+          duration: 0.05,
+        },
+        0.70
+      );
+
+      // FLS scene scales in lockstep from the morphing analytical envelope
+      tl.fromTo(
+        flsSceneRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.05 },
+        0.72
+      );
+
+      tl.fromTo(
+        flsFrameRef.current,
+        {
+          scale: 0.75,
+          opacity: 0.6,
+          y: 20,
+        },
+        {
+          scale: 1.0,
+          opacity: 1,
+          y: 0,
+          duration: 0.06,
+          ease: "power2.out",
+        },
+        0.72
+      );
+
+      // Dissolve wireframe as authentic FLS interface locks in
       tl.to(
         analyticalRef.current,
         {
           opacity: 0,
-          scale: 1.1,
-          duration: 0.06,
+          duration: 0.04,
         },
-        0.68
-      );
-
-      tl.fromTo(
-        flsSceneRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 0.06 },
-        0.70
-      );
-
-      tl.fromTo(
-        flsFrameRef.current,
-        {
-          scale: 0.55,
-          opacity: 0.6,
-          y: 40,
-        },
-        {
-          scale: 0.8,
-          opacity: 1,
-          y: 0,
-          duration: 0.08,
-          ease: "power2.out",
-        },
-        0.70
+        0.76
       );
 
       // ----------------------------------------------------------------------
-      // SCENE 04: FIELD LEARNING STUDIO REVEAL (0.78 -> 1.00)
-      // Stage 1: Frame grounded ("Field evidence is rarely born structured")
-      // Stage 2: Camera pushes into Evidence panel
-      // Stage 3: Workflow progression illuminates
-      // Stage 4: Expands to 88-90% viewport with supporting statement & CTA
+      // SCENE 04: FLS INTERNAL CINEMATIC FOCUS SEQUENCE (0.76 -> 1.00)
+      // FULL FLS -> FOCUS into EVIDENCE -> FINDINGS -> LESSONS -> RECOMMENDATIONS
+      // -> PROFESSIONAL OUTPUT -> PULL BACK TO FULL SYSTEM
       // ----------------------------------------------------------------------
-      // Stage 2: Push into Evidence
+      // Step 1: Full FLS grounded (0.76 -> 0.80)
+      // Step 2: Push camera into EVIDENCE panel (0.80 -> 0.83)
       tl.to(
         flsImageRef.current,
         {
-          scale: 1.15,
-          x: "-4%",
-          y: "-6%",
-          duration: 0.08,
+          scale: 1.30,
+          x: "-6%",
+          y: "-10%",
+          duration: 0.04,
+          ease: "power2.inOut",
         },
         0.80
       );
 
-      // Stage 3 & 4: Full expansion & Workflow progression
-      tl.to(
-        flsFrameRef.current,
-        {
-          scale: 1,
-          duration: 0.1,
-          ease: "power2.inOut",
-        },
-        0.88
-      );
-
+      // Step 3: Glide camera into FINDINGS panel (0.83 -> 0.86)
       tl.to(
         flsImageRef.current,
         {
-          scale: 1,
-          x: "0%",
-          y: "0%",
-          duration: 0.08,
+          scale: 1.30,
+          x: "-2%",
+          y: "-6%",
+          duration: 0.035,
+          ease: "power1.inOut",
         },
-        0.88
+        0.835
       );
 
+      // Step 4: Glide camera into LESSONS panel (0.86 -> 0.89)
       tl.to(
-        ctaRowRef.current,
+        flsImageRef.current,
+        {
+          scale: 1.26,
+          x: "1%",
+          y: "-3%",
+          duration: 0.035,
+          ease: "power1.inOut",
+        },
+        0.87
+      );
+
+      // Step 5: Glide camera into RECOMMENDATIONS panel (0.89 -> 0.92)
+      tl.to(
+        flsImageRef.current,
+        {
+          scale: 1.24,
+          x: "4%",
+          y: "-1%",
+          duration: 0.035,
+          ease: "power1.inOut",
+        },
+        0.90
+      );
+
+      // Step 6: Frame PROFESSIONAL OUTPUT (0.92 -> 0.94)
+      tl.to(
+        flsImageRef.current,
+        {
+          scale: 1.20,
+          x: "6%",
+          y: "0%",
+          duration: 0.03,
+          ease: "power1.inOut",
+        },
+        0.93
+      );
+
+      // Step 7: Smooth pull-back to full complete system (0.94 -> 0.97)
+      tl.to(
+        flsImageRef.current,
+        {
+          scale: 1.0,
+          x: "0%",
+          y: "0%",
+          duration: 0.04,
+          ease: "power2.out",
+        },
+        0.95
+      );
+
+      // Final Frame Statement & CTAs reveal (0.96 -> 1.00)
+      tl.to(
+        ".v2-fls-final-statement",
         {
           opacity: 1,
           y: 0,
-          duration: 0.06,
+          duration: 0.04,
         },
-        0.92
+        0.96
       );
 
       tl.to(
         ".v2-handoff-indicator",
         {
           opacity: 1,
-          duration: 0.05,
+          duration: 0.03,
         },
-        0.94
+        0.97
       );
     });
 
@@ -441,7 +537,6 @@ export function CinematicSequence() {
     // Clean, legible vertical flow without pin traps or scroll conflicts
     // ========================================================================
     mm.add("(max-width: 768px)", () => {
-      // Clear any desktop inline transforms to ensure native mobile readability
       gsap.set(
         [
           heroRef.current,
@@ -449,7 +544,9 @@ export function CinematicSequence() {
           domainsRef.current,
           flsSceneRef.current,
           flsFrameRef.current,
+          flsImageRef.current,
           ctaRowRef.current,
+          ".v2-fls-final-statement",
         ],
         { clearProps: "all" }
       );
@@ -463,18 +560,32 @@ export function CinematicSequence() {
   return (
     <div ref={runwayRef} className="v2-cinematic-runway" id="identity">
       <div ref={stageRef} className="v2-cinematic-stage">
-        {/* TOP TELEMETRY BAR */}
+        {/* RESTRAINED TELEMETRY BAR (Section 3: No fake GPS, no correlation metrics) */}
         <div ref={telemetryRef} className="v2-telemetry-bar">
           <div className="v2-telemetry-phase">
             <span className="v2-telemetry-pulse" />
             <span>{telemetryPhase}</span>
           </div>
-          <div className="v2-telemetry-coords">{telemetryCoord}</div>
+          <div className="v2-telemetry-coords">{telemetryContext}</div>
         </div>
 
         {/* TOPOGRAPHIC ELEVATION LINES LAYER */}
         <div ref={topoRef} className="v2-topo-layer" aria-hidden="true">
           <Contours className="v2-topo-svg" />
+
+          {/* Contour Beacons for Hero -> Field continuity (Section 4) */}
+          <div
+            className="v2-contour-beacon"
+            style={{ top: "34%", left: "48%" }}
+          />
+          <div
+            className="v2-contour-beacon"
+            style={{ top: "46%", left: "64%" }}
+          />
+          <div
+            className="v2-contour-beacon"
+            style={{ top: "58%", left: "54%" }}
+          />
         </div>
 
         {/* ================================================================
@@ -531,49 +642,50 @@ export function CinematicSequence() {
 
         {/* ================================================================
             SCENE 01: COMPLEXITY → CAPABILITY (Analytical Matrix)
+            Professional terminology, high-integrity labels (Sections 5 & 6)
             ================================================================ */}
         <div ref={analyticalRef} className="v2-analytical-stage">
           <div className="v2-analytical-container">
             {/* Step narratives */}
             <div className="v2-stage-narrative">
               <div className="v2-step-narrative-a">
-                <div className="v2-stage-step-tag">STEP A / FIELD</div>
-                <h3 className="v2-stage-step-title">Raw Field Observation</h3>
+                <div className="v2-stage-step-tag">FIELD</div>
+                <h3 className="v2-stage-step-title">OBSERVATIONS</h3>
                 <p className="v2-stage-step-desc">
-                  Complex operational environments produce fragmented, qualitative
-                  signals—field interviews, patrol reports, and situational notes.
+                  Qualitative field inquiries, interviews, and situational notes
+                  from complex operational environments.
                 </p>
               </div>
               <div
                 className="v2-step-narrative-b"
                 style={{ opacity: 0, position: "absolute", top: 0 }}
               >
-                <div className="v2-stage-step-tag">STEP B / EVIDENCE</div>
-                <h3 className="v2-stage-step-title">Traceable Records</h3>
+                <div className="v2-stage-step-tag">EVIDENCE</div>
+                <h3 className="v2-stage-step-title">TRACEABLE RECORDS</h3>
                 <p className="v2-stage-step-desc">
-                  Observations are verified, assigned source provenance, and
-                  indexed for institutional continuity.
+                  Verified observations indexed with source provenance for
+                  institutional continuity.
                 </p>
               </div>
               <div
                 className="v2-step-narrative-c"
                 style={{ opacity: 0, position: "absolute", top: 0 }}
               >
-                <div className="v2-stage-step-tag">STEP C / ANALYSIS</div>
-                <h3 className="v2-stage-step-title">Cross-Sector Relationships</h3>
+                <div className="v2-stage-step-tag">ANALYSIS</div>
+                <h3 className="v2-stage-step-title">RELATIONSHIPS</h3>
                 <p className="v2-stage-step-desc">
-                  Connecting qualitative field notes with institutional mandates,
-                  identifying systemic patterns and root bottlenecks.
+                  Connecting evidence with institutional mandates to reveal systemic
+                  dependencies and root bottlenecks.
                 </p>
               </div>
               <div
                 className="v2-step-narrative-d"
                 style={{ opacity: 0, position: "absolute", top: 0 }}
               >
-                <div className="v2-stage-step-tag">STEP D / DECISION</div>
-                <h3 className="v2-stage-step-title">Noise Reduction</h3>
+                <div className="v2-stage-step-tag">DECISION</div>
+                <h3 className="v2-stage-step-title">PRIORITIES</h3>
                 <p className="v2-stage-step-desc">
-                  Organizing complexity into decision criteria, risk pathways,
+                  Filtering operational noise into decision criteria, risk pathways,
                   and prioritized courses of action.
                 </p>
               </div>
@@ -581,11 +693,11 @@ export function CinematicSequence() {
                 className="v2-step-narrative-e"
                 style={{ opacity: 0, position: "absolute", top: 0 }}
               >
-                <div className="v2-stage-step-tag">STEP E / CAPABILITY</div>
-                <h3 className="v2-stage-step-title">Structured System</h3>
+                <div className="v2-stage-step-tag">CAPABILITY</div>
+                <h3 className="v2-stage-step-title">STRUCTURED SYSTEM</h3>
                 <p className="v2-stage-step-desc">
-                  Insight is codified into repeatable analytical tools and
-                  institutional capability.
+                  Codifying analytical methodology into repeatable frameworks, tools,
+                  and institutional capability.
                 </p>
               </div>
             </div>
@@ -597,7 +709,7 @@ export function CinematicSequence() {
               fill="none"
               aria-hidden="true"
             >
-              {/* Background Coordinate Grid */}
+              {/* Coordinate Grid */}
               <g stroke="rgba(255,255,255,0.05)" strokeWidth="0.8">
                 <line x1="380" y1="50" x2="380" y2="550" strokeDasharray="3 6" />
                 <line x1="580" y1="50" x2="580" y2="550" strokeDasharray="3 6" />
@@ -607,7 +719,7 @@ export function CinematicSequence() {
                 <line x1="380" y1="360" x2="980" y2="360" strokeDasharray="3 6" />
               </g>
 
-              {/* Step C: Restrained Vectors & Relationship Lines */}
+              {/* Step C: Restrained Relationship Vectors */}
               <g className="v2-vector-group">
                 <line
                   className="v2-vector-line"
@@ -660,17 +772,17 @@ export function CinematicSequence() {
                 />
               </g>
 
-              {/* Step A & B: Scattered Field Observation Nodes */}
+              {/* Observation Nodes: High integrity, generic editorial descriptors */}
               <g className="v2-nodes-field-group">
                 {/* Node 1 */}
                 <g className="v2-node-field v2-node-scatter">
                   <circle cx="450" cy="130" r="4.5" className="v2-node-dot" />
                   <circle cx="450" cy="130" r="12" className="v2-node-ring" />
                   <text x="466" y="128" className="v2-node-label">
-                    OBS-01
+                    OBSERVATION
                   </text>
                   <text x="466" y="140" className="v2-node-meta">
-                    04°12&apos;N · INTERVIEWS
+                    FIELD INQUIRY
                   </text>
                 </g>
 
@@ -679,10 +791,10 @@ export function CinematicSequence() {
                   <circle cx="470" cy="310" r="4.5" className="v2-node-dot" />
                   <circle cx="470" cy="310" r="12" className="v2-node-ring" />
                   <text x="486" y="308" className="v2-node-label">
-                    OBS-02
+                    OBSERVATION
                   </text>
                   <text x="486" y="320" className="v2-node-meta">
-                    04°18&apos;N · PATROL LOGS
+                    CONTEXTUAL RECORD
                   </text>
                 </g>
 
@@ -691,10 +803,10 @@ export function CinematicSequence() {
                   <circle cx="640" cy="210" r="5" className="v2-node-dot" />
                   <circle cx="640" cy="210" r="14" className="v2-node-ring" />
                   <text x="658" y="208" className="v2-node-label">
-                    EVD-03 · CLUSTER
+                    RECORD
                   </text>
                   <text x="658" y="220" className="v2-node-meta">
-                    COMMUNITY ADVISORY
+                    SOURCE PROVENANCE
                   </text>
                 </g>
 
@@ -703,10 +815,10 @@ export function CinematicSequence() {
                   <circle cx="660" cy="280" r="5" className="v2-node-dot" />
                   <circle cx="660" cy="280" r="14" className="v2-node-ring" />
                   <text x="678" y="278" className="v2-node-label">
-                    EVD-04 · METRIC
+                    RECORD
                   </text>
                   <text x="678" y="290" className="v2-node-meta">
-                    INFRASTRUCTURE STATUS
+                    VERIFIED ARTIFACT
                   </text>
                 </g>
 
@@ -715,10 +827,10 @@ export function CinematicSequence() {
                   <circle cx="840" cy="160" r="5" className="v2-node-dot" />
                   <circle cx="840" cy="160" r="14" className="v2-node-ring" />
                   <text x="858" y="158" className="v2-node-label">
-                    DEC-01 · CRITERIA
+                    CRITERIA
                   </text>
                   <text x="858" y="170" className="v2-node-meta">
-                    POLICING ENVIRONMENT
+                    DECISION MATRIX
                   </text>
                 </g>
 
@@ -727,10 +839,10 @@ export function CinematicSequence() {
                   <circle cx="860" cy="340" r="5" className="v2-node-dot" />
                   <circle cx="860" cy="340" r="14" className="v2-node-ring" />
                   <text x="878" y="338" className="v2-node-label">
-                    DEC-02 · SEQUENCE
+                    SEQUENCE
                   </text>
                   <text x="878" y="350" className="v2-node-meta">
-                    CAPACITY WORKBENCH
+                    ACTION PATHWAY
                   </text>
                 </g>
               </g>
@@ -746,6 +858,7 @@ export function CinematicSequence() {
                   fill="rgba(17,20,22,0.85)"
                   stroke="var(--line)"
                   strokeWidth="1"
+                  rx="3"
                 />
                 <text
                   x="434"
@@ -761,25 +874,28 @@ export function CinematicSequence() {
                   x="434"
                   y="140"
                   width="122"
-                  height="44"
+                  height="45"
                   fill="rgba(255,255,255,0.03)"
                   stroke="rgba(255,255,255,0.06)"
+                  rx="2"
                 />
                 <rect
                   x="434"
-                  y="200"
+                  y="195"
                   width="122"
-                  height="44"
+                  height="45"
                   fill="rgba(255,255,255,0.03)"
                   stroke="rgba(255,255,255,0.06)"
+                  rx="2"
                 />
                 <rect
                   x="434"
-                  y="260"
+                  y="250"
                   width="122"
-                  height="44"
+                  height="45"
                   fill="rgba(255,255,255,0.03)"
                   stroke="rgba(255,255,255,0.06)"
+                  rx="2"
                 />
 
                 {/* Column 2: Analysis */}
@@ -791,6 +907,7 @@ export function CinematicSequence() {
                   fill="rgba(17,20,22,0.85)"
                   stroke="var(--line)"
                   strokeWidth="1"
+                  rx="3"
                 />
                 <text
                   x="624"
@@ -809,6 +926,7 @@ export function CinematicSequence() {
                   height="70"
                   fill="rgba(255,255,255,0.03)"
                   stroke="rgba(255,255,255,0.06)"
+                  rx="2"
                 />
                 <rect
                   x="624"
@@ -817,6 +935,7 @@ export function CinematicSequence() {
                   height="70"
                   fill="rgba(255,255,255,0.03)"
                   stroke="rgba(255,255,255,0.06)"
+                  rx="2"
                 />
 
                 {/* Column 3: Decision */}
@@ -828,6 +947,7 @@ export function CinematicSequence() {
                   fill="rgba(17,20,22,0.85)"
                   stroke="var(--line)"
                   strokeWidth="1"
+                  rx="3"
                 />
                 <text
                   x="814"
@@ -847,6 +967,7 @@ export function CinematicSequence() {
                   fill="rgba(198,149,82,0.08)"
                   stroke="var(--accent)"
                   strokeWidth="0.8"
+                  rx="2"
                 />
                 <rect
                   x="814"
@@ -855,10 +976,11 @@ export function CinematicSequence() {
                   height="90"
                   fill="rgba(255,255,255,0.03)"
                   stroke="rgba(255,255,255,0.06)"
+                  rx="2"
                 />
               </g>
 
-              {/* Step E: Complete Capability Grid Envelope */}
+              {/* Step E: Capability Grid Envelope */}
               <g className="v2-capability-grid" style={{ opacity: 0 }}>
                 <rect
                   x="400"
@@ -869,6 +991,7 @@ export function CinematicSequence() {
                   stroke="var(--accent)"
                   strokeWidth="1"
                   strokeDasharray="4 8"
+                  rx="4"
                   opacity="0.4"
                 />
                 <text
@@ -879,7 +1002,7 @@ export function CinematicSequence() {
                   fill="var(--accent)"
                   letterSpacing="0.16em"
                 >
-                  SYSTEM ARCHITECTURE / DEFENSIVE LEARNING BOUNDARY
+                  SYSTEM ARCHITECTURE / METHODOLOGICAL BOUNDARY
                 </text>
               </g>
             </svg>
@@ -887,7 +1010,8 @@ export function CinematicSequence() {
         </div>
 
         {/* ================================================================
-            SCENE 02: OPERATING DOMAINS BRIDGE
+            SCENE 02: OPERATING DOMAINS BRIDGE (Section 7)
+            Exact approved 5 domains -> SYSTEMS · PEOPLE · DECISIONS
             ================================================================ */}
         <div ref={domainsRef} className="v2-domains-bridge" id="domains">
           <div className="v2-domains-content">
@@ -902,7 +1026,7 @@ export function CinematicSequence() {
               ))}
             </div>
             <p className="v2-domain-desc">
-              From peace operations and security environments to learning design
+              From peace operations and security environments to human learning
               and digital decision architectures.
             </p>
             <div className="v2-domains-resolve">
@@ -913,19 +1037,18 @@ export function CinematicSequence() {
 
         {/* ================================================================
             SCENE 03 & 04: FIELD LEARNING STUDIO CINEMATIC REVEAL
+            Interface authenticity & Internal Focus Sequence (Sections 8, 9, 10, 11)
             ================================================================ */}
         <div ref={flsSceneRef} className="v2-fls-scene" id="fls-reveal">
           <div ref={flsFrameRef} className="v2-fls-frame-wrapper">
-            {/* Window Chrome Header */}
+            {/* Window Chrome Header (Neutral authentic chrome, fls.maissara.tech) */}
             <div className="v2-fls-chrome">
               <div className="v2-fls-dots" aria-hidden="true">
                 <span />
                 <span />
                 <span />
               </div>
-              <div className="v2-fls-url-bar">
-                field-learning-studio.app/studio · Community Bridges
-              </div>
+              <div className="v2-fls-url-bar">fls.maissara.tech</div>
               <div className="v2-fls-badge">METHODOLOGY-FIRST WORKBENCH</div>
             </div>
 
@@ -936,9 +1059,9 @@ export function CinematicSequence() {
                   src="/images/field-learning-studio.webp"
                   alt="Field Learning Studio authentic interface preview."
                   fill
-                  priority
                   sizes="(max-width: 1280px) 94vw, 1280px"
                   style={{ objectFit: "cover", objectPosition: "top center" }}
+                  loading="lazy"
                 />
               </div>
 
@@ -988,19 +1111,25 @@ export function CinematicSequence() {
             </div>
           </div>
 
-          {/* Bottom Statement & CTA Row */}
-          <div ref={ctaRowRef} className="v2-fls-cta-row">
-            <a
-              className="button-primary"
-              href="https://fls.maissara.tech"
-              target="_blank"
-              rel="noreferrer"
-            >
-              EXPLORE CASE STUDY <span aria-hidden="true">↗</span>
-            </a>
-            <a className="text-link" href="#work">
-              CONTINUE TO REMAINING SYSTEMS <span aria-hidden="true">↓</span>
-            </a>
+          {/* FLS Final Frame: Exact Approved Headline, Statement & CTAs (Section 11) */}
+          <div className="v2-fls-final-statement">
+            <h3 className="v2-fls-final-title">FIELD LEARNING STUDIO</h3>
+            <p className="v2-fls-final-desc">
+              A human-led analytical workbench for turning field evidence into defensible institutional learning.
+            </p>
+            <div ref={ctaRowRef} className="v2-fls-cta-row">
+              <a className="button-primary" href="#fls-case-study">
+                EXPLORE CASE STUDY →
+              </a>
+              <a
+                className="button-secondary"
+                href="https://fls.maissara.tech"
+                target="_blank"
+                rel="noreferrer"
+              >
+                OPEN SYSTEM <span aria-hidden="true">↗</span>
+              </a>
+            </div>
           </div>
 
           <div className="v2-handoff-indicator" aria-hidden="true">
