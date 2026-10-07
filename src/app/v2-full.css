@@ -1084,3 +1084,6 @@ html {
 @media (prefers-reduced-motion: reduce) {
   .progression li { animation: none; opacity: 1; }
 }
+
+/* Direct chapter anchors must stay clear of the shared fixed header. */
+.case-study-chapter h2[id] { scroll-margin-top: 110px; }

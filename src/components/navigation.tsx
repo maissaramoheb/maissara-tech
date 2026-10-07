@@ -18,7 +18,7 @@ export function Navigation() {
       },
       { rootMargin: "-15% 0px -55% 0px", threshold: 0 },
     );
-    for (const [, href] of navigation) {
+    for (const href of [...navigation.map(([, href]) => href), "#contact"]) {
       const section = document.getElementById(href.slice(1));
       if (section) observer.observe(section);
     }
@@ -86,7 +86,8 @@ export function Navigation() {
           {links()}
         </nav>
         <Link
-          className={`contact-link ${pathname === "/contact" ? "nav-current" : ""}`}
+          className={`contact-link ${(home ? active === "#contact" : pathname === "/contact") ? "nav-current" : ""}`}
+          aria-current={(home ? active === "#contact" : pathname === "/contact") ? (home ? "location" : "page") : undefined}
           href={home ? "#contact" : "/contact"}
           onClick={() => setOpen(false)}
         >
