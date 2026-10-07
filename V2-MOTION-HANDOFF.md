@@ -135,6 +135,7 @@ To maintain the **90% editorial / 10% tactical balance**:
    - Operating Domains list
    - FLS Workbench card with authentic screenshot and CTAs
 4. **Telemetry HUD:** Hidden completely on mobile (`display: none;`).
+5. **Zero Horizontal Overflow:** Container wrappers (`.v2-cinematic-runway`, `.v2-cinematic-stage`, `.v2-topo-layer`, `.v2-analytical-stage`, `.v2-domains-bridge`) enforce `overflow-x: hidden;` and `width: 100%; max-width: 100%;`. Domain titles flex vertically (`flex-direction: column`) with `white-space: normal; word-break: break-word` to guarantee zero horizontal bleed on 390px mobile viewports.
 
 ---
 

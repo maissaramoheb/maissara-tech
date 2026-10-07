@@ -605,6 +605,9 @@
 @media (max-width: 768px) {
   .v2-cinematic-runway {
     height: auto;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   .v2-cinematic-stage {
@@ -612,9 +615,15 @@
     top: auto;
     height: auto;
     min-height: auto;
-    overflow: visible;
+    overflow-x: hidden;
     padding: 0;
     display: block;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .v2-topo-layer {
+    overflow: hidden;
   }
 
   .v2-telemetry-bar {
@@ -632,10 +641,12 @@
     padding-block: 40px 60px;
     opacity: 1;
     transform: none;
+    overflow-x: hidden;
   }
 
   .v2-hero-inner {
     width: min(100% - 40px, 1328px);
+    margin-inline: auto;
   }
 
   .v2-hero-grid {
@@ -651,6 +662,7 @@
   .v2-hero-visual {
     width: 100%;
     min-height: 340px;
+    overflow: hidden;
   }
 
   .v2-analytical-stage {
@@ -664,6 +676,7 @@
     transform: none;
     padding-block: 60px 40px;
     border-top: 1px solid var(--line);
+    overflow: hidden;
   }
 
   .v2-analytical-container {
@@ -671,6 +684,8 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+    margin-inline: auto;
+    overflow: hidden;
   }
 
   .v2-stage-narrative {
@@ -693,6 +708,7 @@
     height: auto;
     max-height: 280px;
     opacity: 1;
+    overflow: hidden;
   }
 
   .v2-domains-bridge {
@@ -706,24 +722,34 @@
     transform: none;
     padding-block: 60px 40px;
     border-top: 1px solid var(--line);
+    overflow: hidden;
   }
 
   .v2-domains-content {
     width: min(100% - 40px, 1100px);
+    margin-inline: auto;
     text-align: left;
     align-items: flex-start;
   }
 
   .v2-domains-title-track {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
     height: auto;
     min-height: 48px;
+    width: 100%;
   }
 
   .v2-domain-item {
-    font-size: clamp(24px, 6vw, 32px);
+    font-size: clamp(20px, 5.5vw, 28px);
     position: relative !important;
     opacity: 1 !important;
     transform: none !important;
+    white-space: normal;
+    word-break: break-word;
+    max-width: 100%;
   }
 
   .v2-fls-scene {
