@@ -5,7 +5,7 @@ import { Contours } from "@/components/visuals";
 import {
   site,
   biography,
-  credentials,
+  executiveCredentials,
   professionalTrajectory,
   researchThemes,
   labs,
@@ -348,11 +348,23 @@ export function AboutSection({ deep = false }: { deep?: boolean }) {
         {biography.map((p) => (
           <p key={p}>{p}</p>
         ))}
-        <ul className="credential-tags">
-          {credentials.map((credential) => (
-            <li key={credential}>{credential}</li>
-          ))}
-        </ul>
+        {/* V2.1 Executive Credentials Ledger */}
+        <div className="credentials-ledger" aria-label="Executive credentials and qualifications">
+          <p className="credentials-ledger-header label">EXECUTIVE CREDENTIALS &amp; FOUNDATIONS</p>
+          <div className="credentials-ledger-list">
+            {executiveCredentials.map((item) => (
+              <div key={item.index} className="credential-ledger-row">
+                <span className="credential-ledger-index" aria-hidden="true">
+                  {item.index}
+                </span>
+                <div className="credential-ledger-content">
+                  <h3 className="credential-ledger-title">{item.title}</h3>
+                  <p className="credential-ledger-desc">{item.descriptor}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
         {!deep && (
           <Link className="case-link" href="/about">
             PROFESSIONAL PROFILE <span aria-hidden="true">→</span>

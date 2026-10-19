@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CinematicSequence } from "@/components/v2-motion/CinematicSequence";
 import { HomeContinuation } from "@/components/v2/HomeContinuation";
+import { OperationalMetrics } from "@/components/v2/OperationalMetrics";
 import {
   ProjectChapter,
   TrajectoryChapter,
@@ -32,6 +33,7 @@ export default function Home() {
     <>
       <CinematicSequence />
       <HomeContinuation>
+        <OperationalMetrics />
         <section
           id="work"
           className="selected-systems"

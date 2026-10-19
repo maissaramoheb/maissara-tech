@@ -150,3 +150,101 @@ export const profileAreas = [
  { title:'RESEARCH', copy:'Interdisciplinary inquiry connects practical questions with evidence, decision-making and emerging technology.' },
  { title:'SYSTEM BUILDING', copy:'Digital workbenches and methodologies structure recurring professional problems while keeping people responsible for consequential decisions.' },
 ];
+
+export type OperationalMetric = {
+  id: string;
+  index: string;
+  targetNumber: number;
+  suffix?: string;
+  padZero?: boolean;
+  valueDisplay: string;
+  label: string;
+  supporting: string;
+  ariaLabel: string;
+  provenance: string;
+};
+
+export const operationalMetrics: OperationalMetric[] = [
+  {
+    id: "service",
+    index: "01",
+    targetNumber: 18,
+    suffix: "TH",
+    padZero: false,
+    valueDisplay: "18TH",
+    label: "YEAR OF PROFESSIONAL SERVICE",
+    supporting: "Policing · Security · Strategic Leadership",
+    ariaLabel: "18th year of professional service in policing, security, and strategic leadership",
+    provenance: "Professional service commenced July 2009; active in 18th calendar year as of 2026.",
+  },
+  {
+    id: "un-engagement",
+    index: "02",
+    targetNumber: 5,
+    suffix: "+",
+    padZero: false,
+    valueDisplay: "5+",
+    label: "YEARS OF UN ENGAGEMENT",
+    supporting: "Peace Operations · Training · Capacity Development",
+    ariaLabel: "5 plus years of UN engagement across peace operations, training, and capacity development",
+    provenance: "Engagement spans 2021–2026 across UN peace operations and capacity-building work.",
+  },
+  {
+    id: "systems",
+    index: "03",
+    targetNumber: 4,
+    suffix: "",
+    padZero: true,
+    valueDisplay: "04",
+    label: "FEATURED DIGITAL SYSTEMS",
+    supporting: "Decision Support · Learning · Applied Technology",
+    ariaLabel: "04 featured digital systems: Field Learning Studio, UNPOL CBD, YCPS Toolkit Lab, Trifecta Performance Lab",
+    provenance: "Four documented public workbenches and decision-support prototypes.",
+  },
+  {
+    id: "research",
+    index: "04",
+    targetNumber: 3,
+    suffix: "",
+    padZero: true,
+    valueDisplay: "03",
+    label: "RESEARCH FOCUS AREAS",
+    supporting: "Human–AI Decisions · Peace Operations · Human Performance",
+    ariaLabel: "03 core research focus areas: Human–AI Decisions, Peace Operations, Human Performance",
+    provenance: "Three published inquiry themes investigating decision-making under complexity.",
+  },
+];
+
+export type ExecutiveCredential = {
+  index: string;
+  title: string;
+  descriptor: string;
+  category: "ACADEMIC" | "EXECUTIVE" | "OPERATIONAL" | "SPECIALIZATION";
+};
+
+export const executiveCredentials: ExecutiveCredential[] = [
+  {
+    index: "01",
+    title: "LAW & POLICE SCIENCES",
+    descriptor: "Academic & Operational Policing Foundations",
+    category: "ACADEMIC",
+  },
+  {
+    index: "02",
+    title: "MBA — AI IN BUSINESS ORGANIZATIONS",
+    descriptor: "Strategic Technology Management & Enterprise Intelligence",
+    category: "EXECUTIVE",
+  },
+  {
+    index: "03",
+    title: "UN PEACE OPERATIONS",
+    descriptor: "Peacekeeping Missions, Advisory & Security-Sector Governance",
+    category: "OPERATIONAL",
+  },
+  {
+    index: "04",
+    title: "CERTIFIED TRAINER",
+    descriptor: "Training of Trainers · Training Design · Capacity Development",
+    category: "SPECIALIZATION",
+  },
+];

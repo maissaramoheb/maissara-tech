@@ -59,6 +59,204 @@ html {
   max-width: 620px;
   margin-top: 28px;
 }
+/* ==========================================================================
+   V2.1 EXECUTIVE ENHANCEMENTS: OPERATIONAL METRICS (THE ARCHITECTURAL GRID)
+   ========================================================================== */
+.operational-metrics {
+  position: relative;
+  padding-top: 140px;
+  padding-bottom: 80px;
+}
+
+.metrics-intro {
+  margin-bottom: 48px;
+}
+
+.metrics-tag-row {
+  margin-bottom: 24px;
+}
+
+.metrics-tag-row .label {
+  color: var(--accent);
+  letter-spacing: 0.12em;
+}
+
+.metrics-header-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+@media (min-width: 769px) {
+  .metrics-header-grid {
+    grid-template-columns: 1.15fr 1fr;
+    align-items: flex-end;
+    gap: 48px;
+  }
+}
+
+.metrics-heading {
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: clamp(34px, 4.2vw, 56px);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+  color: var(--text);
+  margin: 0;
+}
+
+.metrics-dot {
+  color: var(--accent);
+}
+
+.metrics-lead {
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 520px;
+  margin: 0;
+}
+
+/* The Architectural Grid */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid var(--line);
+  background: var(--background);
+  position: relative;
+}
+
+@media (min-width: 641px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .metrics-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.metric-cell {
+  position: relative;
+  padding: 34px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 210px;
+  background: var(--surface);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.metric-cell:hover {
+  background: var(--surface-raised);
+}
+
+/* Cell Dividing Borders */
+@media (max-width: 640px) {
+  .metric-cell:not(:last-child) {
+    border-bottom: 1px solid var(--line);
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1023px) {
+  .metric-cell:nth-child(odd) {
+    border-right: 1px solid var(--line);
+  }
+  .metric-cell:nth-child(1),
+  .metric-cell:nth-child(2) {
+    border-bottom: 1px solid var(--line);
+  }
+}
+
+@media (min-width: 1024px) {
+  .metric-cell:not(:last-child) {
+    border-right: 1px solid var(--line);
+  }
+}
+
+.metric-cell-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.metric-index {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.metric-value-row {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 22px;
+}
+
+.metric-value {
+  font-family: var(--font-geist-sans), sans-serif;
+  font-weight: 300;
+  font-size: clamp(44px, 4.6vw, 62px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" on, "zero" on;
+}
+
+.metric-suffix {
+  font-family: var(--font-geist-mono), monospace;
+  color: var(--accent);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.metric-suffix-th {
+  font-size: clamp(14px, 1.4vw, 18px);
+  letter-spacing: 0.05em;
+  margin-left: 3px;
+  position: relative;
+  top: -0.6em;
+}
+
+.metric-suffix-plus {
+  font-size: clamp(24px, 2.5vw, 34px);
+  font-weight: 400;
+  margin-left: 3px;
+  position: relative;
+  top: -0.1em;
+}
+
+.metric-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metric-label {
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.metric-supporting {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0;
+}
+
 .selected-systems {
   position: relative;
 }
@@ -407,6 +605,95 @@ html {
   line-height: 1.85;
   margin-bottom: 20px;
 }
+/* ==========================================================================
+   V2.1 EXECUTIVE ENHANCEMENTS: EXECUTIVE CREDENTIALS STRIP
+   ========================================================================== */
+.credentials-ledger {
+  margin: 36px 0 32px;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+
+.credentials-ledger-header {
+  color: var(--accent) !important;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.credentials-ledger-list {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--line);
+}
+
+.credential-ledger-row {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  align-items: baseline;
+  gap: 16px;
+  padding: 16px 8px;
+  border-top: 1px solid rgba(38, 43, 46, 0.6);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.credential-ledger-row:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.credential-ledger-index {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+}
+
+.credential-ledger-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+@media (min-width: 769px) {
+  .credential-ledger-content {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+  }
+}
+
+.credential-ledger-title {
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+
+.credential-ledger-desc {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0;
+  text-align: left;
+}
+
+@media (min-width: 769px) {
+  .credential-ledger-desc {
+    text-align: right;
+  }
+}
+
 .credential-tags {
   list-style: none;
   display: flex;
