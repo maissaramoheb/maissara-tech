@@ -103,12 +103,13 @@ export function CinematicSequence() {
       if (flsSceneRef.current) flsSceneRef.current.inert = true;
       const handoffIndicator = runwayRef.current?.querySelector<HTMLElement>(".v2-handoff-indicator");
       const tl = gsap.timeline({
+        defaults: { ease: "power2.out" },
         scrollTrigger: {
           trigger: runwayRef.current,
           start: "top top",
-          end: "+=340%",
+          end: "+=420%",
           pin: stageRef.current,
-          scrub: 1,
+          scrub: 1.2,
           anticipatePin: 1,
           onUpdate: (self) => {
             const p = self.progress;
@@ -441,9 +442,9 @@ export function CinematicSequence() {
       tl.to(
         flsImageRef.current,
         {
-          scale: 1.30,
-          x: "-6%",
-          y: "-10%",
+          scale: 1.12,
+          x: "-2%",
+          y: "-3%",
           duration: 0.04,
           ease: "power2.inOut",
         },
@@ -454,9 +455,9 @@ export function CinematicSequence() {
       tl.to(
         flsImageRef.current,
         {
-          scale: 1.30,
+          scale: 1.12,
           x: "-2%",
-          y: "-6%",
+          y: "-2%",
           duration: 0.035,
           ease: "power1.inOut",
         },
@@ -467,7 +468,7 @@ export function CinematicSequence() {
       tl.to(
         flsImageRef.current,
         {
-          scale: 1.26,
+          scale: 1.10,
           x: "1%",
           y: "-3%",
           duration: 0.035,
@@ -480,8 +481,8 @@ export function CinematicSequence() {
       tl.to(
         flsImageRef.current,
         {
-          scale: 1.24,
-          x: "4%",
+          scale: 1.08,
+          x: "2%",
           y: "-1%",
           duration: 0.035,
           ease: "power1.inOut",
@@ -493,8 +494,8 @@ export function CinematicSequence() {
       tl.to(
         flsImageRef.current,
         {
-          scale: 1.20,
-          x: "6%",
+          scale: 1.06,
+          x: "2%",
           y: "0%",
           duration: 0.03,
           ease: "power1.inOut",

@@ -3,11 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import { Label } from "@/components/sections";
 import { operationalMetrics } from "@/data/site";
-import type { OperationalMetric } from "@/data/site";
-
-function easeOutQuart(x: number): number {
-  return 1 - Math.pow(1 - x, 4);
-}
+import { counterValue, motion } from "@/lib/motion";
 
 export function OperationalMetrics() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -23,14 +19,13 @@ export function OperationalMetrics() {
     ).matches;
 
     // Formatting helper
-    const formatValue = (metric: OperationalMetric, val: number) =>
-      metric.padZero ? String(val).padStart(2, "0") : String(val);
+    const formatValue = counterValue;
 
     // If reduced motion is preferred, ensure final values are rendered and exit
     if (prefersReducedMotion) {
       operationalMetrics.forEach((m, idx) => {
         const el = numRefs.current[idx];
-        if (el) el.textContent = formatValue(m, m.targetNumber);
+        if (el) el.textContent = formatValue(m, 1);
       });
       return;
     }
@@ -49,19 +44,18 @@ export function OperationalMetrics() {
       if (hasAnimated) return;
       hasAnimated = true;
 
-      const duration = 1500; // 1.5 seconds: calm, precise, confident
+      const duration = motion.counter;
       const startTime = performance.now();
 
       const tick = (now: number) => {
         const elapsed = now - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        const eased = easeOutQuart(progress);
+
 
         operationalMetrics.forEach((m, idx) => {
           const el = numRefs.current[idx];
           if (!el) return;
-          const current = Math.round(eased * m.targetNumber);
-          el.textContent = formatValue(m, current);
+          el.textContent = formatValue(m, progress);
         });
 
         if (progress < 1) {
@@ -69,7 +63,7 @@ export function OperationalMetrics() {
         } else {
           operationalMetrics.forEach((m, idx) => {
             const el = numRefs.current[idx];
-            if (el) el.textContent = formatValue(m, m.targetNumber);
+            if (el) el.textContent = formatValue(m, 1);
           });
         }
       };
@@ -113,7 +107,7 @@ export function OperationalMetrics() {
         </div>
         <div className="metrics-header-grid">
           <h2 id="metrics-title" className="metrics-heading">
-            EXPERIENCE IN NUMBERS<span className="metrics-dot">.</span>
+            Experience in numbers<span className="metrics-dot">.</span>
           </h2>
           <p className="metrics-lead">
             Field experience, international engagement, applied systems, and research.
@@ -165,6 +159,7 @@ export function OperationalMetrics() {
           </article>
         ))}
       </div>
+      <p className="metrics-scope">Service since July 2009 · UN engagement across 2021–2026, including peace operations and capacity development. Research figures describe focus areas, not publications.</p>
     </section>
   );
 }

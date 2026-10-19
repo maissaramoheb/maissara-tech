@@ -13,9 +13,18 @@ const GeistMono = localFont({
   display: "swap",
   preload: false,
 });
+const Newsreader = localFont({
+  src: "./Newsreader-Latin.woff2",
+  variable: "--font-editorial",
+  weight: "400",
+  display: "swap",
+  adjustFontFallback: "Times New Roman",
+});
+import { EditorialMotion } from "@/components/v2/EditorialMotion";
 import { site } from "@/data/site";
 import "./globals.css";
 import "./v2-full.css";
+import "./v2-premium.css";
 import { Navigation } from "@/components/navigation";
 import { SiteFooter } from "@/components/v2/editorial";
 export const metadata: Metadata = {
@@ -52,14 +61,14 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} ${Newsreader.variable}`}>
       <body>
         <a className="skip-link" href="#main">
           Skip to content
         </a>
         <Navigation />
         <main id="main" tabIndex={-1}>
-          {children}
+          <EditorialMotion>{children}</EditorialMotion>
         </main>
         <SiteFooter />
       </body>

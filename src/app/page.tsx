@@ -42,9 +42,9 @@ export default function Home() {
           <header className="selected-intro container chapter-reveal">
             <Label>05 / SELECTED SYSTEMS</Label>
             <h2 id="selected-title">
-              DIFFERENT PROBLEMS.
+              Different problems.
               <br />
-              <span>SAME DISCIPLINE.</span>
+              <span>Same discipline.</span>
             </h2>
             <div>
               <p>

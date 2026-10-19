@@ -74,8 +74,9 @@ export function AccessLinks({
 }
 export function ProjectMedia({ project }: { project: Project }) {
   return (
-    <figure className="project-media">
-      <div className="project-media-clip">
+    <figure className={`project-media project-media-${project.slug}`}>
+      <div className="media-register label" aria-hidden="true"><span>SYSTEM / {project.id}</span><span>{project.slug === "ycps-toolkit-lab" ? "WORKFLOW STUDY" : "INTERFACE RECORD"}</span></div>
+      <div className="project-media-clip" data-editorial-media>
         <Image
           src={project.image}
           alt={project.imageAlt}
@@ -205,9 +206,9 @@ export function TrajectoryChapter({ deep = false }: { deep?: boolean }) {
       <div className="chapter-intro chapter-reveal">
         <Label>06 / PROFESSIONAL TRAJECTORY</Label>
         <h2 id="trajectory-title">
-          PRACTICE
+          Practice
           <br />
-          BEFORE PRODUCT.
+          before product.
         </h2>
         <p>
           The systems did not begin as software ideas. They emerged from
@@ -297,7 +298,7 @@ export function LabSection() {
     >
       <div className="chapter-intro chapter-reveal">
         <Label>08 / EXPERIMENTAL WORK</Label>
-        <h2 id="lab-heading">MAISSARA LAB</h2>
+        <h2 id="lab-heading">Maissara Lab</h2>
         <p>
           Experiments at the intersection of learning, decision-making and
           emerging technology.
@@ -358,6 +359,7 @@ export function AboutSection({ deep = false }: { deep?: boolean }) {
                   {item.index}
                 </span>
                 <div className="credential-ledger-content">
+                  <span className="credential-category label">{item.category}</span>
                   <h3 className="credential-ledger-title">{item.title}</h3>
                   <p className="credential-ledger-desc">{item.descriptor}</p>
                 </div>
@@ -389,9 +391,9 @@ export function ContactSection({ deep = false }: { deep?: boolean }) {
         <span />
       </div>
       <Heading id="contact-heading">
-        COMPLEX PROBLEM?
+        Complex problem?
         <br />
-        <span>START WITH THE SYSTEM AROUND IT.</span>
+        <span>Start with the system around it.</span>
       </Heading>
       {deep && (
         <p className="editorial-description">
