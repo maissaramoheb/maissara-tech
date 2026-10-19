@@ -86,7 +86,8 @@ export function OperationalMetrics() {
       }
     );
 
-    observer.observe(section);
+    // Start when the numerals approach the viewport, not at the section padding.
+    observer.observe(section.querySelector(".metrics-grid") ?? section);
 
     return () => {
       cancelAnimationFrame(rafId);
