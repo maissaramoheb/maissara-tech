@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Contours } from "@/components/visuals";
 import { Progression } from "@/components/reveal";
+import { motion } from "@/lib/motion";
 import { Label } from "@/components/sections";
 
 // Exact approved Operating Domains taxonomy (Section 7)
@@ -107,9 +108,9 @@ export function CinematicSequence() {
         scrollTrigger: {
           trigger: runwayRef.current,
           start: "top top",
-          end: "+=420%",
+          end: motion.cinematic.runway,
           pin: stageRef.current,
-          scrub: 1.2,
+          scrub: motion.cinematic.smoothing,
           anticipatePin: 1,
           onUpdate: (self) => {
             const p = self.progress;
@@ -124,28 +125,28 @@ export function CinematicSequence() {
               setTelemetryPhase("MS. / SYSTEMS ARCHITECTURE");
               setTelemetryContext("METHODOLOGY · OBSERVE → ACT");
             } else if (p < 0.22) {
-              setTelemetryPhase("01 / FIELD");
+              setTelemetryPhase("FIELD");
               setTelemetryContext("OBSERVATIONS");
             } else if (p < 0.32) {
-              setTelemetryPhase("01 / EVIDENCE");
+              setTelemetryPhase("EVIDENCE");
               setTelemetryContext("TRACEABLE RECORDS");
             } else if (p < 0.42) {
-              setTelemetryPhase("01 / ANALYSIS");
+              setTelemetryPhase("ANALYSIS");
               setTelemetryContext("RELATIONSHIPS");
             } else if (p < 0.52) {
-              setTelemetryPhase("01 / DECISION");
+              setTelemetryPhase("DECISION");
               setTelemetryContext("PRIORITIES");
             } else if (p < 0.62) {
-              setTelemetryPhase("01 / CAPABILITY");
+              setTelemetryPhase("CAPABILITY");
               setTelemetryContext("STRUCTURED SYSTEM");
             } else if (p < 0.74) {
-              setTelemetryPhase("02 / OPERATING DOMAINS");
+              setTelemetryPhase("OPERATING DOMAINS");
               setTelemetryContext("INTERDISCIPLINARY PRACTICE");
             } else if (p < 0.80) {
-              setTelemetryPhase("03 / METHODOLOGY TO SYSTEM");
+              setTelemetryPhase("METHODOLOGY TO SYSTEM");
               setTelemetryContext("THINKING BECOMES SYSTEM");
             } else {
-              setTelemetryPhase("04 / FIELD LEARNING STUDIO");
+              setTelemetryPhase("FIELD LEARNING STUDIO");
               setTelemetryContext("PRODUCTION WORKBENCH · fls.maissara.tech");
             }
 
@@ -241,7 +242,7 @@ export function CinematicSequence() {
       );
 
       // ----------------------------------------------------------------------
-      // SCENE 01: COMPLEXITY → CAPABILITY MATRIX PROGRESSION (0.16 -> 0.60)
+      // SCENE 01: Complexity → capability MATRIX PROGRESSION (0.16 -> 0.60)
       // ----------------------------------------------------------------------
       // Step B: Field -> Evidence (Traceable records indexed with source provenance)
       tl.fromTo(
@@ -331,7 +332,7 @@ export function CinematicSequence() {
       tl.to(
         analyticalRef.current,
         {
-          opacity: 0.20,
+          opacity: 0.06,
           scale: 0.94,
           duration: 0.05,
         },
@@ -347,20 +348,11 @@ export function CinematicSequence() {
         0.58
       );
 
-      // 5 approved domains sequence
-      const domainItems = gsap.utils.toArray<HTMLElement>(".v2-domain-item");
-      domainItems.forEach((item, idx) => {
-        const startT = 0.58 + idx * 0.02;
-        tl.fromTo(
-          item,
-          { opacity: 0, y: 16 },
-          { opacity: 1, y: 0, duration: 0.018 },
-          startT
-        );
-        if (idx < domainItems.length - 1) {
-          tl.to(item, { opacity: 0, y: -12, duration: 0.012 }, startT + 0.018);
-        }
-      });
+      // A stable editorial list replaces the rapid title carousel. All five domains
+      // remain readable together; there is no competing child exit animation.
+      tl.fromTo(".v2-domain-item", { opacity: 0, y: 12 }, {
+        opacity: 1, y: 0, duration: 0.055, stagger: 0.006, ease: "power2.out",
+      }, 0.59);
 
       // Resolve into: SYSTEMS · PEOPLE · DECISIONS
       tl.to(
@@ -442,7 +434,7 @@ export function CinematicSequence() {
       tl.to(
         flsImageRef.current,
         {
-          scale: 1.12,
+          scale: motion.cinematic.focusScale,
           x: "-2%",
           y: "-3%",
           duration: 0.04,
@@ -455,7 +447,7 @@ export function CinematicSequence() {
       tl.to(
         flsImageRef.current,
         {
-          scale: 1.12,
+          scale: motion.cinematic.focusScale,
           x: "-2%",
           y: "-2%",
           duration: 0.035,
@@ -468,7 +460,7 @@ export function CinematicSequence() {
       tl.to(
         flsImageRef.current,
         {
-          scale: 1.10,
+          scale: 1.07,
           x: "1%",
           y: "-3%",
           duration: 0.035,
@@ -481,7 +473,7 @@ export function CinematicSequence() {
       tl.to(
         flsImageRef.current,
         {
-          scale: 1.08,
+          scale: 1.06,
           x: "2%",
           y: "-1%",
           duration: 0.035,
@@ -494,8 +486,8 @@ export function CinematicSequence() {
       tl.to(
         flsImageRef.current,
         {
-          scale: 1.06,
-          x: "2%",
+          scale: 1.04,
+          x: "1%",
           y: "0%",
           duration: 0.03,
           ease: "power1.inOut",
@@ -617,14 +609,13 @@ export function CinematicSequence() {
               <div className="v2-hero-copy">
                 <div className="hero-top" style={{ marginBottom: "28px" }}>
                   <Label>
-                    MS / 01 <span className="label-divider">—</span> FIELD •
-                    STRATEGY • SYSTEMS
+                    Field · Strategy · Systems
                   </Label>
                 </div>
                 <h1 id="hero-title">
-                  MAISSARA
+                  Maissara
                   <br />
-                  SELIM<span className="identity-dot">.</span>
+                  Selim<span className="identity-dot">.</span>
                 </h1>
                 <h2 className="hero-thesis">
                   From complex environments
@@ -648,12 +639,11 @@ export function CinematicSequence() {
               </div>
               <div className="v2-hero-visual">
                 <div className="visual-caption label">
-                  COMPLEXITY → CAPABILITY
+                  Complexity → capability
                 </div>
                 <Progression />
                 <div className="visual-register label" aria-hidden="true">
                   <span>OBSERVE / UNDERSTAND / ACT</span>
-                  <span>MS — 01</span>
                 </div>
               </div>
             </div>
@@ -661,7 +651,7 @@ export function CinematicSequence() {
         </div>
 
         {/* ================================================================
-            SCENE 01: COMPLEXITY → CAPABILITY (Analytical Matrix)
+            SCENE 01: Complexity → capability (Analytical Matrix)
             Professional terminology, high-integrity labels (Sections 5 & 6)
             ================================================================ */}
         <div ref={analyticalRef} className="v2-analytical-stage">
@@ -1037,12 +1027,12 @@ export function CinematicSequence() {
         <div ref={domainsRef} className="v2-domains-bridge" id="domains">
           <div className="v2-domains-content">
             <div className="v2-domains-tag">
-              02 / OPERATING DOMAINS — INTERDISCIPLINARY PRACTICE
+              Operating domains · Interdisciplinary practice
             </div>
             <div className="v2-domains-title-track">
               {DOMAINS_LIST.map((domain) => (
                 <div key={domain.title} className="v2-domain-item">
-                  {domain.title}
+                  {(domain.title.charAt(0) + domain.title.slice(1).toLowerCase()).replace(/\bai\b/gi, "AI")}
                 </div>
               ))}
             </div>
@@ -1134,7 +1124,7 @@ export function CinematicSequence() {
 
           {/* FLS Final Frame: Exact Approved Headline, Statement & CTAs (Section 11) */}
           <div className="v2-fls-final-statement">
-            <h2 className="v2-fls-final-title">FIELD LEARNING STUDIO</h2>
+            <h2 className="v2-fls-final-title">Field Learning Studio</h2>
             <p className="v2-fls-final-desc">
               A human-led analytical workbench for turning field evidence into defensible institutional learning.
             </p>

@@ -27,10 +27,10 @@ export default function AboutPage() {
         <h2 id="profile-areas-title" className="sr-only">
           Areas of professional practice
         </h2>
-        {profileAreas.map((area, i) => (
+        {profileAreas.map((area) => (
           <article key={area.title}>
             <Label>
-              0{i + 1} / {area.title}
+              {area.title}
             </Label>
             <p>{area.copy}</p>
           </article>

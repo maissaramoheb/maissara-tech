@@ -14,9 +14,10 @@ export function OperationalMetrics() {
     if (!section) return;
 
     // Check if user prefers reduced motion
-    const prefersReducedMotion = window.matchMedia(
+    const preference = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
-    ).matches;
+    );
+    const prefersReducedMotion = preference.matches;
 
     // Formatting helper
     const formatValue = counterValue;
@@ -89,7 +90,19 @@ export function OperationalMetrics() {
     // Start when the numerals approach the viewport, not at the section padding.
     observer.observe(section.querySelector(".metrics-grid") ?? section);
 
+    const settle = () => {
+      if (!preference.matches) return;
+      cancelAnimationFrame(rafId);
+      observer?.disconnect();
+      hasAnimated = true;
+      operationalMetrics.forEach((metric, index) => {
+        const element = numRefs.current[index];
+        if (element) element.textContent = formatValue(metric, 1);
+      });
+    };
+    preference.addEventListener("change", settle);
     return () => {
+      preference.removeEventListener("change", settle);
       cancelAnimationFrame(rafId);
       observer?.disconnect();
     };
@@ -104,7 +117,7 @@ export function OperationalMetrics() {
     >
       <header className="metrics-intro chapter-reveal">
         <div className="metrics-tag-row">
-          <Label>04B / OPERATIONAL EVIDENCE</Label>
+          <Label>Experience & scope</Label>
         </div>
         <div className="metrics-header-grid">
           <h2 id="metrics-title" className="metrics-heading">
@@ -123,12 +136,6 @@ export function OperationalMetrics() {
             className="metric-cell"
             aria-label={metric.ariaLabel}
           >
-            <div className="metric-cell-top">
-              <span className="metric-index" aria-hidden="true">
-                {metric.index} / {metric.id.toUpperCase().replace("-", " ")}
-              </span>
-            </div>
-
             <div className="metric-value-row" aria-hidden="true">
               <span
                 ref={(el) => {

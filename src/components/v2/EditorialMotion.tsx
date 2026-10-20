@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 import { usePathname } from "next/navigation";
-import { motion } from "@/lib/motion";
+import { motion, revealFrames } from "@/lib/motion";
 
 /** A single reveal language across all nine routes, with visible server-rendered content. */
 export function EditorialMotion({ children }: { children: ReactNode }) {
@@ -22,18 +22,17 @@ export function EditorialMotion({ children }: { children: ReactNode }) {
         const media = target.hasAttribute("data-editorial-media");
         const element = media ? target.querySelector("img") : target;
         if (!element) return;
-        const animation = element.animate(
-          media
-            ? [{ opacity: 0.86, transform: "scale(1.018)" }, { opacity: 1, transform: "scale(1)" }]
-            : [{ opacity: 0.7, transform: `translateY(${motion.distance}px)` }, { opacity: 1, transform: "translateY(0)" }],
-          { duration: media ? motion.editorial : motion.reveal, easing: motion.ease },
-        );
+        const kind = media ? (target.hasAttribute("data-artwork") ? "artwork" : "media") : "text";
+        const animation = element.animate(revealFrames(kind), {
+          duration: media ? motion.editorial : motion.reveal,
+          easing: motion.ease,
+        });
         animations.add(animation);
         animation.onfinish = () => animations.delete(animation);
       });
     }, { threshold: 0.08, rootMargin: "0px 0px -24px 0px" });
     root.current?.querySelectorAll(
-      ".chapter-reveal, .editorial-intro, .case-study-chapter, .work-index-copy, .about-editorial, .public-outputs article, [data-editorial-media]",
+      ".chapter-reveal, .editorial-intro, .case-study-chapter > .label, .case-study-chapter > div > h2, .case-study-chapter > div > p, .project-exhibit-heading, .project-exhibit-copy, .about-editorial > h2, .public-outputs article, [data-editorial-media]",
     ).forEach((element) => observer.observe(element));
     const settle = () => {
       if (preference.matches) animations.forEach((animation) => animation.cancel());

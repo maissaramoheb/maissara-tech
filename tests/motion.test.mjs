@@ -28,3 +28,19 @@ test("counters are bounded, monotonic, padded and settle exactly", () => {
     for (const p of [1, 2, NaN, Infinity]) assert.equal(+counterValue(metric, p), targetNumber);
   }
 });
+
+
+test("shared reveals settle visibly without large movement or a portrait camera effect", () => {
+  const { revealFrames, motion } = exports;
+  for (const kind of ["text", "media", "artwork"]) {
+    const frames = revealFrames(kind);
+    assert.equal(frames.at(-1).opacity, 1);
+    assert.ok(frames[0].opacity >= .75);
+  }
+  assert.equal(revealFrames("artwork")[0].transform, undefined);
+  assert.equal(revealFrames("media").at(-1).transform, "scale(1)");
+  assert.ok(motion.distance <= 16);
+  assert.ok(motion.reveal >= 850 && motion.reveal <= 1200);
+  assert.ok(motion.editorial >= 1100 && motion.editorial <= 1500);
+  assert.ok(motion.counter >= 2400 && motion.counter <= 2800);
+});

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Label, ExternalLink } from "@/components/sections";
+import { EditorialArtwork } from "@/components/v2/EditorialArtwork";
 import { Contours } from "@/components/visuals";
 import {
   site,
@@ -75,7 +76,7 @@ export function AccessLinks({
 export function ProjectMedia({ project }: { project: Project }) {
   return (
     <figure className={`project-media project-media-${project.slug}`}>
-      <div className="media-register label" aria-hidden="true"><span>SYSTEM / {project.id}</span><span>{project.slug === "ycps-toolkit-lab" ? "WORKFLOW STUDY" : "INTERFACE RECORD"}</span></div>
+      <div className="media-register label" aria-hidden="true"><span>{project.shortName}</span><span>{project.slug === "ycps-toolkit-lab" ? "Explanatory visualization" : "Public interface"}</span></div>
       <div className="project-media-clip" data-editorial-media>
         <Image
           src={project.image}
@@ -136,65 +137,43 @@ export function ProjectBoundaryNote({ project }: { project: Project }) {
     </aside>
   );
 }
-export function ProjectChapter({
-  project,
-  index,
+export function ProjectExhibit({
+  project, heading = "h3", title = project.shortName, children,
 }: {
   project: Project;
-  index: number;
+  heading?: "h2" | "h3";
+  title?: string;
+  children?: React.ReactNode;
 }) {
+  const Heading = heading;
   return (
-    <article
-      className={`project-chapter project-chapter-${project.slug}`}
-      id={project.slug}
-    >
+    <article className={`project-chapter project-chapter-${project.slug}`} id={project.slug}>
       <div className="container project-chapter-grid">
-        <div className="project-chapter-copy chapter-reveal">
-          <Label>
-            SYSTEM / {project.id} <span className="index-divider">—</span>{" "}
-            {project.status}
-          </Label>
-          <h3>{project.shortName}</h3>
-          {project.qualifier && (
-            <p className="boundary-qualifier">{project.qualifier}</p>
-          )}
-          <p className="chapter-description">{project.description}</p>
-          <AccessLinks project={project} />
-        </div>
-        <div className="project-chapter-object">
-          <ProjectMedia project={project} />
-          <WorkflowDiagram
-            steps={
-              index === 0
-                ? [
-                    "Context",
-                    "Stakeholders",
-                    "Synthesis",
-                    "Priorities",
-                    "Sequencing",
-                    "Implementation",
-                  ]
-                : index === 1
-                  ? [
-                      "Youth + climate + peace/security pressures",
-                      "Risk pathways",
-                      "Actors",
-                      "Programme / policy responses",
-                      "Review-ready outputs",
-                    ]
-                  : [
-                      "Learning domains + human performance",
-                      "Evidence",
-                      "Progression",
-                      "Trainer-development decisions",
-                    ]
-            }
-            compact
-          />
+        <header className="project-exhibit-heading">
+          <Label>System / {project.id}<span className="exhibit-status">{project.status}</span></Label>
+          <Heading>{title}</Heading>
+        </header>
+        <div className="project-chapter-object"><ProjectMedia project={project} /></div>
+        <div className="project-exhibit-details">
+          <div className="project-exhibit-copy">
+            {project.qualifier && <p className="boundary-qualifier">{project.qualifier}</p>}
+            <p className="chapter-description">{project.description}</p>
+            <AccessLinks project={project} />
+          </div>
+          {children && <div className="project-exhibit-notes">{children}</div>}
         </div>
       </div>
     </article>
   );
+}
+
+export function ProjectChapter({ project, index }: { project: Project; index: number }) {
+  const steps = index === 0
+    ? ["Context", "Stakeholders", "Synthesis", "Priorities", "Sequencing", "Implementation"]
+    : index === 1
+      ? ["Youth + climate + peace/security pressures", "Risk pathways", "Actors", "Programme / policy responses", "Review-ready outputs"]
+      : ["Learning domains + human performance", "Evidence", "Progression", "Trainer-development decisions"];
+  return <ProjectExhibit project={project}><WorkflowDiagram steps={steps} compact /></ProjectExhibit>;
 }
 export function TrajectoryChapter({ deep = false }: { deep?: boolean }) {
   return (
@@ -204,7 +183,7 @@ export function TrajectoryChapter({ deep = false }: { deep?: boolean }) {
       aria-labelledby="trajectory-title"
     >
       <div className="chapter-intro chapter-reveal">
-        <Label>06 / PROFESSIONAL TRAJECTORY</Label>
+        <Label>Professional trajectory</Label>
         <h2 id="trajectory-title">
           Practice
           <br />
@@ -249,7 +228,7 @@ export function ResearchChapter({ deep = false }: { deep?: boolean }) {
       aria-labelledby="research-heading"
     >
       <div className="chapter-intro">
-        <Label>{deep ? "RESEARCH THEMES" : "07 / RESEARCH"}</Label>
+        <Label>{deep ? "RESEARCH THEMES" : "Research & inquiry"}</Label>
         <h2 id="research-heading" className={deep ? "sr-only" : ""}>
           Research emerging from practice.
         </h2>
@@ -261,16 +240,17 @@ export function ResearchChapter({ deep = false }: { deep?: boolean }) {
           </p>
         )}
       </div>
+      <EditorialArtwork variant="inquiry" />
       <div className="research-questions">
-        {researchThemes.map((theme, i) => (
+        {researchThemes.map((theme) => (
           <article
             key={theme.title}
             className="research-question chapter-reveal"
           >
-            <Label>THEME / 0{i + 1}</Label>
+            <Label>{theme.title}</Label>
             <div>
               <Heading>{theme.question}</Heading>
-              <p className="research-territory">{theme.title}</p>
+
             </div>
           </article>
         ))}
@@ -297,7 +277,7 @@ export function LabSection() {
       aria-labelledby="lab-heading"
     >
       <div className="chapter-intro chapter-reveal">
-        <Label>08 / EXPERIMENTAL WORK</Label>
+        <Label>Experimental work</Label>
         <h2 id="lab-heading">Maissara Lab</h2>
         <p>
           Experiments at the intersection of learning, decision-making and
@@ -329,18 +309,9 @@ export function AboutSection({ deep = false }: { deep?: boolean }) {
       className={`about-chapter container ${deep ? "about-deep" : ""}`}
       aria-labelledby="about-heading"
     >
-      <div
-        className="about-signature"
-        role="img"
-        aria-label="Maissara Selim MS monogram"
-      >
-        <Contours />
-        <span aria-hidden="true">
-          MS<span>.</span>
-        </span>
-      </div>
+      <EditorialArtwork variant="portrait" />
       <div className="about-editorial">
-        <Label>{deep ? "PROFESSIONAL PROFILE" : "09 / ABOUT"}</Label>
+        <Label>{deep ? "PROFESSIONAL PROFILE" : "About"}</Label>
         <h2 id="about-heading">
           Grounded in practice.
           <br />
@@ -355,11 +326,8 @@ export function AboutSection({ deep = false }: { deep?: boolean }) {
           <div className="credentials-ledger-list">
             {executiveCredentials.map((item) => (
               <div key={item.index} className="credential-ledger-row">
-                <span className="credential-ledger-index" aria-hidden="true">
-                  {item.index}
-                </span>
                 <div className="credential-ledger-content">
-                  <span className="credential-category label">{item.category}</span>
+                  <span className="credential-category label">{item.category.charAt(0) + item.category.slice(1).toLowerCase()}</span>
                   <h3 className="credential-ledger-title">{item.title}</h3>
                   <p className="credential-ledger-desc">{item.descriptor}</p>
                 </div>
@@ -384,7 +352,7 @@ export function ContactSection({ deep = false }: { deep?: boolean }) {
       className={`contact-chapter container ${deep ? "contact-deep" : ""}`}
       aria-labelledby="contact-heading"
     >
-      <Label>{deep ? "CONTACT / COLLABORATION" : "10 / CONTACT"}</Label>
+      <Label>{deep ? "CONTACT / COLLABORATION" : "Contact"}</Label>
       <div className="closing-geometry" aria-hidden="true">
         <span />
         <span />
@@ -437,7 +405,7 @@ export function CaseStudyChapter({
       aria-labelledby={`case-${number}`}
     >
       <Label>
-        {String(number).padStart(2, "0")} / {title}
+        Chapter {String(number).padStart(2, "0")}
       </Label>
       <div>
         <h2 id={`case-${number}`}>

@@ -40,7 +40,7 @@ export default function Home() {
           aria-labelledby="selected-title"
         >
           <header className="selected-intro container chapter-reveal">
-            <Label>05 / SELECTED SYSTEMS</Label>
+            <Label>Selected systems</Label>
             <h2 id="selected-title">
               Different problems.
               <br />
