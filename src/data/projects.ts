@@ -78,12 +78,12 @@ export const projects: Project[] = [
     shortName: "UNPOL CBD Planning Tool",
     name: "UNPOL Capacity-Building & Development Integrated Planning Tool",
     status: "UNOFFICIAL / ACTIVE DEVELOPMENT",
-    image: "/images/unpol-planning.webp",
+    image: "/images/unpol-planning-overview.webp",
     imageAlt:
-      "The public UNPOL CBD planning prototype home interface and planning navigation.",
-    imageCaption: "PUBLIC INTERFACE / UNOFFICIAL PLANNING PROTOTYPE",
-    imageWidth: 1280,
-    imageHeight: 470,
+      "The public UNPOL CBD planning prototype home interface with its expanded seven-stage planning explanation.",
+    imageCaption: "PUBLIC INTERFACE / UNOFFICIAL PLANNING PROTOTYPE · HOW IT WORKS",
+    imageWidth: 1440,
+    imageHeight: 900,
     context:
       "UNPOL advisory teams, SSR specialists, peace operations planners, Rule of Law practitioners and training users must translate mandates into context-sensitive capacity-building work.",
     problem:

@@ -7,7 +7,7 @@ export const motion = {
   editorial: 1350,
   counter: 2600,
   distance: 12,
-  cinematic: { runway: "+=480%", smoothing: 1.35, focusScale: 1.08 },
+  cinematic: { runway: "+=440%", smoothing: 1.35, focusScale: 1.08 },
   ease: "cubic-bezier(0.22, 1, 0.36, 1)",
 } as const;
 

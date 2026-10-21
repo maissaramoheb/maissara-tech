@@ -441,3 +441,27 @@ a, button { transition: color var(--motion-micro) var(--ease-editorial), backgro
   .contact-chapter > .label { margin-bottom: 32px; }
   .contact-chapter h1, .contact-chapter h2 { font-size: clamp(44px,7.5vw,64px); }
 }
+
+/* V2.2.2: an unpinned chapter threshold, followed by the existing ivory ledger. */
+.cinematic-threshold { background: var(--background-cinematic); border-bottom: 24px solid var(--background-editorial-muted); color: var(--text-muted-dark); }
+.cinematic-threshold > .container { display: flex; align-items: center; gap: 32px; padding-block: 28px 40px; }
+.cinematic-threshold .label { flex: none; color: #c69552; font-size: 10px; }
+.threshold-rule { flex: 1; height: 1px; background: var(--border-dark); }
+.academic-milestone { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,6fr); gap: 8%; align-items: center; padding-block: var(--space-section); border-block: 1px solid var(--line); }
+.academic-artwork { max-width: 480px; }
+.academic-artwork .artwork-plate { aspect-ratio: 2 / 3; padding: 8px; }
+.academic-copy { max-width: 580px; }
+.academic-copy > .label { display: block; margin-bottom: 28px; }
+.academic-copy h2 { font-family: var(--font-editorial), Georgia, serif; font-size: clamp(36px,4vw,58px); font-weight: 400; line-height: 1.12; letter-spacing: -.035em; }
+.academic-copy h2 span { white-space: nowrap; }
+.academic-copy p { font-size: 16px; line-height: 1.8; color: var(--muted); }
+.academic-copy .academic-focus { color: var(--text); font-size: 19px; margin-block: 28px; }
+@media (max-width:768px) {
+  .cinematic-threshold { border-bottom-width: 16px; }
+  .cinematic-threshold > .container { padding-block: 22px 30px; gap: 20px; }
+  .academic-milestone { grid-template-columns: 1fr; gap: 40px; }
+  .academic-artwork { width: 100%; max-width: 480px; margin-inline: auto; }
+  .academic-copy { max-width: none; }
+  .academic-copy h2 { font-size: clamp(36px,7vw,50px); }
+  .academic-copy p { font-size: 15px; }
+}

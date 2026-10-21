@@ -1,3 +1,25 @@
+# V2.2.2 artwork decisions — 21 October 2026
+
+The owner approves the V2.2.1 professional engraving and visual direction. Retain the primary portrait on Home/About. Add only the explicitly supplied graduation illustration on /about, adjacent to the credentials and development narrative. Instructor and office/strategy illustrations are **not approved and are not integrated**. Earlier proposals below are historical and do not authorize future contextual portraits.
+
+## Academic milestone source and treatment
+
+Approved input: `codex-clipboard-6b65d76c-91b0-4ebe-8c88-331e498ea560.png`, 1024×1536, owner-supplied finished editorial engraving. SHA-256: `1fe15972dbb80ceee368272741f241637b338c389c7f0b55824e07285379bd35`. It is a finished illustration, not the private original graduation photograph. No new likeness was generated, no other graduation photograph was substituted, and no instructor image was copied into the repository.
+
+Public derivative: `/images/maissara-mba-editorial.webp`, 1024×1536, 530,234 bytes, WebP quality 88. Conversion preserves all illustration pixels and omits source metadata. It retains warm ivory, navy and antique brass; no thick frame, new badge, logo, parallax or facial zoom. Next Image serves responsive optimized widths at quality 85. Maximum desktop artwork width 480 CSS px; mobile fits the reading column. The 2:3 container reserves geometry and uses contain. No private source photographs or attachment PNGs are committed.
+
+The visible medallion and certificate folder must be verified by the owner against the real event before production. The supplied artwork also contains stylized academic dress and background architectural motifs. These details do not establish an award, institution, degree classification or endorsement. Caption explicitly identifies an owner-supplied editorial illustration and says it is not a documentary record of a qualification or award. Alt describes visible objects without interpreting the medallion as an earned distinction. The adjacent facts come only from the owner's brief: MBA, AI in Business Organizations, 2026. No DBA, university or award claim is added.
+
+Use the existing opacity-only 1350ms artwork reveal. SSR content is visible without the animation; reduced-motion content is immediately complete. Cold, warm, delayed and throttled loading, decode failures and unavailable animation APIs are tested separately from screenshot readiness.
+
+## Application-source improvement
+
+UNPOL's new 1440×900 screenshot was captured directly from the public `https://unpol.maissara.tech/` interface on 21 October 2026, dark mode, with the real How It Works explanation expanded. No workspace records were entered or changed. No personal or operational records are visible. The prototype qualifier remains in the image and caption. This authentic 16:10 capture replaces the 1280×470 display crop in projects.ts; the older asset remains for historical data compatibility. No application UI was generated or composited.
+
+---
+
+## Historical V2.2.1 art direction
+
 # Editorial illustration art direction
 
 V2.2.1 · Owner visual and likeness approval pending · Preview only.

@@ -83,7 +83,7 @@ export function ProjectMedia({ project }: { project: Project }) {
           alt={project.imageAlt}
           width={project.imageWidth}
           height={project.imageHeight}
-          sizes="(max-width: 768px) 100vw, (max-width: 1100px) 70vw, 900px"
+          sizes="(max-width: 768px) 90vw, (max-width: 1328px) 90vw, 1108px"
           loading="lazy"
         />
       </div>

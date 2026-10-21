@@ -33,6 +33,9 @@ export default function Home() {
     <>
       <CinematicSequence />
       <HomeContinuation>
+        <div className="cinematic-threshold" aria-hidden="true">
+          <div className="container"><span className="label">Practice / Evidence</span><span className="threshold-rule" /></div>
+        </div>
         <OperationalMetrics />
         <section
           id="work"

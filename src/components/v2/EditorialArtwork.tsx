@@ -1,7 +1,17 @@
 import Image from "next/image";
 
 /** Curated artwork is separate from application evidence and always qualified. */
-export function EditorialArtwork({ variant }: { variant: "portrait" | "inquiry" }) {
+export function EditorialArtwork({ variant }: { variant: "portrait" | "inquiry" | "academic" }) {
+  if (variant === "academic") return (
+    <figure className="editorial-artwork academic-artwork">
+      <div className="artwork-plate" data-editorial-media data-artwork>
+        <Image src="/images/maissara-mba-editorial.webp"
+          alt="Editorial engraving supplied by Maissara Selim, depicting him in academic dress holding a certificate folder and a medallion."
+          width={1024} height={1536} quality={85} sizes="(max-width: 768px) 90vw, 480px" loading="lazy" />
+      </div>
+      <figcaption>Owner-supplied editorial illustration · not a documentary record of a qualification or award</figcaption>
+    </figure>
+  );
   if (variant === "portrait") return (
     <figure className="editorial-artwork editorial-portrait">
       <div className="artwork-plate" data-editorial-media data-artwork>
